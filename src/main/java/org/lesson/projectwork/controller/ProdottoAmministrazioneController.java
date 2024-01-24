@@ -45,14 +45,29 @@ public class ProdottoAmministrazioneController {
         }
     }
 
+    @GetMapping("/create")
+    public String create(Model model) {
+        Prodotto prodotto = new Prodotto();
+        model.addAttribute("prodotto", prodotto);
+        return "shop/amministrazione/create";
+    }
+
+    @PostMapping("/create")
+    public String create2(@Valid @ModelAttribute("prodotto") Prodotto formProdotto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("prodotto", prodottoRepository.findAll());
+            return "recipe/create";
+        }
+        Prodotto savedProdotto = prodottoRepository.save(formProdotto);
+        return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
+    }
+
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         Optional<Prodotto> result = prodottoRepository.findById(id);
         if (result.isPresent()) {
             model.addAttribute("prodotto", result.get());
-
-            return "templates/amministrazione/edit";
-
+            return "amministrazione/edit";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "prodotto with id " + id + " not found");
         }
@@ -64,26 +79,25 @@ public class ProdottoAmministrazioneController {
         if (result.isPresent()) {
             Prodotto prodottoToEdit = result.get();
             if (bindingResult.hasErrors()) {
-                return "/templates/amministrazione/edit";
+                return "/amministrazione/edit";
             }
             formProdotto.setFoto(prodottoToEdit.getFoto());
-            Prodotto savedProdotto = prodottoRepository.save(formProdotto);
+            Prodotto savedProdotto= prodottoRepository.save(formProdotto);
 
             return "redirect:/amministrazione/show/{id}";
-
-        } else {
+        }
+        else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
         }
     }
-
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
         Optional<Prodotto> result = prodottoRepository.findById(id);
-        if (result.isPresent()) {
+        if (result.isPresent()){
             prodottoRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getNome() + " è stato cancellato!");
             return "redirect:/amministrazione";
-        } else {
+        }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found!");
         }
     }
