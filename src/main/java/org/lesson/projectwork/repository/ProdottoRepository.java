@@ -1,4 +1,6 @@
 package org.lesson.projectwork.repository;
 
-public interface ProdottoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProdottoRepository extends JpaRepository {
 }
