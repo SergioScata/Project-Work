@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/shop/amministrazione")
+@RequestMapping("/amministrazione")
 public class ProdottoAmministrazioneController {
     @Autowired
     private ProdottoRepository prodottoRepository;
@@ -24,7 +24,7 @@ public class ProdottoAmministrazioneController {
     public String index(@RequestParam(name ="keyword", required = false) String searchKeyword, Model model) {
         List<Prodotto> prodottoList;
         if (searchKeyword != null ){
-            prodottoList= prodottoRepository.findByNameContaining(searchKeyword);
+            prodottoList= prodottoRepository.findByNomeContaining(searchKeyword);
         }else {
             prodottoList = prodottoRepository.findAll();
         }
