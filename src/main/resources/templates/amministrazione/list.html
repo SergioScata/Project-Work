@@ -7,8 +7,6 @@
 
 <main class="container">
 
-    <h1>List</h1>
-
     <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
          class="bg-body-secondary  bd-example-toasts rounded-3">
         <div class="toast-container p-3 translate-middle-x" id="toastPlacement"
@@ -46,42 +44,59 @@
         </div>
 
         <div class="row">
+            <div class="col-12 col-lg-8">
+                <table class="table table-striped mt-2" th:unless="${prodottoList.size == 0}">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Quantità</th>
+                    </tr>
+                    </thead>
 
-            <table class="table table-striped" th:unless="${prodottoList.size == 0}">
-                <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Prezzo</th>
-                    <th scope="col">Quantità</th>
-                </tr>
-                </thead>
+                    <tbody>
+                    <tr th:each="prodotto : ${prodottoList}">
+                        <div>
+                            <a th:href="@{/amministrazione/show}">
+                                <td class="img-td-widt"><img class="img-fluid img-list" th:src="@{${prodotto.foto}}">
+                                </td>
+                                <td class="fw-normal" th:text="${prodotto.nome}"></td>
+                                <td>
+                                    <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
+                                </td>
+                                <td>
+                                    <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
+                                </td>
+                            </a>
+                        </div>
+                    </tr>
 
-                <tbody>
-                <tr th:each="prodotto : ${prodottoList}">
-                    <div>
-                        <a th:href="@{/amministrazione/show}">
-                            <td class="img-td-widt"><img class="img-fluid img-list" th:src="@{${prodotto.foto}}">
-                            </td>
-                            <td class="fw-normal" th:text="${prodotto.nome}"></td>
-                            <td>
-                                <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
-                            </td>
-                            <td>
-                                <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
-                            </td>
-                        </a>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-12 col-lg-3">
+                <div class="card ">
+                    <div class="card-header text-center">
+                        <h5>Gestione prodotti</h5>
                     </div>
-                </tr>
+                    <div class="text-center m-3">
+                        <div class="mt-2">
+                            <a class="btn btn-primary" th:href="@{/amministrazione/edit}">Aggiungi un nuovo prodotto</a>
+                        </div>
 
-
-                </tbody>
-            </table>
+                        <div class="mt-3">
+                            <a class="btn btn-primary" th:href="@{/amministrazione/edit}">Registra nuovo
+                                assortimento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-12 col-lg-3 mt-2">
-            <a class="btn btn-primary" th:href="@{/amministrazione/edit}">Aggiungi un nuovo prodotto</a>
-        </div>
+
     </div>
 
 </main>
