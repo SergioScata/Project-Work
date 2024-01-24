@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -62,5 +63,15 @@ public class ProdottoAmministrazioneController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
         }
     }
-
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        Optional<Prodotto> result = prodottoRepository.findById(id);
+        if (result.isPresent()){
+            prodottoRepository.deleteById(id);
+            redirectAttributes.addFlashAttribute("redirectMessage", result.get().getNome() + " è stato cancellato!");
+            return "redirect:/amministrazione";
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found");
+        }
+    }
 }
