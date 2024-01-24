@@ -50,14 +50,14 @@ public class ProdottoAmministrazioneController {
     public String create(Model model) {
         Prodotto prodotto = new Prodotto();
         model.addAttribute("prodotto", prodotto);
-        return "shop/amministrazione/edit";
+        return "amministrazione/create";
     }
 
     @PostMapping("/create")
     public String create2(@Valid @ModelAttribute("prodotto") Prodotto formProdotto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("prodotto", prodottoRepository.findAll());
-            return "amministrazione/edit";
+            return "amministrazione/create";
         }
         Prodotto savedProdotto = prodottoRepository.save(formProdotto);
         return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
@@ -68,7 +68,7 @@ public class ProdottoAmministrazioneController {
         Optional<Prodotto> result = prodottoRepository.findById(id);
         if (result.isPresent()) {
             model.addAttribute("prodotto", result.get());
-            return "amministrazione/edit";
+            return "amministrazione/create";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "prodotto with id " + id + " not found");
         }
@@ -80,7 +80,7 @@ public class ProdottoAmministrazioneController {
         if (result.isPresent()) {
             Prodotto prodottoToEdit = result.get();
             if (bindingResult.hasErrors()) {
-                return "/amministrazione/edit";
+                return "/amministrazione/create";
             }
             formProdotto.setFoto(prodottoToEdit.getFoto());
             Prodotto savedProdotto = prodottoRepository.save(formProdotto);
