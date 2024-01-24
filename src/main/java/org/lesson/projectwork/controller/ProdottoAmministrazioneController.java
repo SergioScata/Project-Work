@@ -20,12 +20,13 @@ import java.util.Optional;
 public class ProdottoAmministrazioneController {
     @Autowired
     private ProdottoRepository prodottoRepository;
+
     @GetMapping
-    public String index(@RequestParam(name ="keyword", required = false) String searchKeyword, Model model) {
+    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
         List<Prodotto> prodottoList;
-        if (searchKeyword != null ){
-            prodottoList= prodottoRepository.findByNomeContaining(searchKeyword);
-        }else {
+        if (searchKeyword != null) {
+            prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
+        } else {
             prodottoList = prodottoRepository.findAll();
         }
         model.addAttribute("prodottoList", prodottoList);
@@ -82,22 +83,22 @@ public class ProdottoAmministrazioneController {
                 return "/amministrazione/edit";
             }
             formProdotto.setFoto(prodottoToEdit.getFoto());
-            Prodotto savedProdotto= prodottoRepository.save(formProdotto);
+            Prodotto savedProdotto = prodottoRepository.save(formProdotto);
 
             return "redirect:/amministrazione/show/{id}";
-        }
-        else{
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
         }
     }
+
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Optional<Prodotto> result = prodottoRepository.findById(id);
-        if (result.isPresent()){
+        if (result.isPresent()) {
             prodottoRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getNome() + " è stato cancellato!");
-            return "redirect:/amministrazione";
-        }else {
+            return "redirect:/amministrazione/list";
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found!");
         }
     }

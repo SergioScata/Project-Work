@@ -19,10 +19,18 @@
         </div>
     </div>
 
-        <div class="row mt-3">
-            <div class="col-6" th:text="${prodotto.prezzo}"></div>
-            <div class="col-6" th:text="${prodotto.quantità}"></div>
-        </div>
+    <div class="row mt-3">
+        <div class="col-6" th:text="${prodotto.prezzo}"></div>
+        <div class="col-6" th:text="${prodotto.quantità}"></div>
+    </div>
+
+    <div>
+        <a class="btn btn-primary me-2" th:href="@{/amministrazione/edit/{id}(id=${prodotto.id})}">Modifica</a>
+        <form th:action="@{/amministrazione/delete/{id}(id=${prodotto.id})}" method="post"
+              onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?')">
+            <button type="submit" class="btn btn-primary">Cancella</button>
+        </form>
+
 
     </div>
     <div class="text-center mt-5">
@@ -30,5 +38,7 @@
                 class="fa-solid fa-circle-chevron-left"></i> Ritorna alla lista </a>
     </div>
 </div>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
 </body>
 </html>
