@@ -6,7 +6,99 @@
 
 <body>
 <h1>prova</h1>
-<a class="btn btn-warning margine" th:href="@{/acqui/create}">Aggiungi :'(</a>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+<body>
+
+<main class="container">
+
+    <h1>List</h1>
+
+    <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
+         class="bg-body-secondary  bd-example-toasts rounded-3">
+        <div class="toast-container p-3 translate-middle-x" id="toastPlacement"
+             data-original-class="toast-container p-3">
+            <div class="toast fade show">
+                <div class="toast-header">
+                    <i class="fa-solid fa-pizza-slice"></i>
+                    <strong class="me-auto">Museo alert</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" th:text="${redirectMessage}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="mt-4 mb-4 row">
+            <div class="col-8">
+                <h2>Catalogo Prodotti</h2>
+            </div>
+
+            <form class="col-3" id="prodotto-search" th:action="@{/shop}" method="get">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="keyword" id="keyword"
+                           placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div th:if="${prodottoList.size == 0}" class="mt-5 pt-3 text-center">
+            <h2>The list is empty</h2>
+        </div>
+
+        <div class="row">
+
+            <table class="table table-striped" th:unless="${prodottoList.size == 0}">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Quantità</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="prodotto : ${prodottoList}">
+                    <div>
+                        <a th:href="@{/amministrazione/show}">
+                            <td class="img-td-widt"><img class="img-fluid img-list" th:src="@{${prodotto.foto}}">
+                            </td>
+                            <td class="fw-normal" th:text="${prodotto.nome}"></td>
+                            <td>
+                                <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
+                            </td>
+                            <td>
+                                <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
+                            </td>
+                        </a>
+                    </div>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-12 col-lg-3 mt-2">
+            <a class="btn btn-primary" th:href="@{/amministrazione/create}">Aggiungi un nuovo prodotto</a>
+        </div>
+    </div>
+
+</main>
+
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>
+<a class="btn btn-warning margine" th:href="@{/acquisto/create}">Aggiungi :'(</a>
 
 
 <th:block th:replace="fragments/resources :: script"></th:block>
