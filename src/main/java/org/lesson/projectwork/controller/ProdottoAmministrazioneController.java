@@ -51,6 +51,7 @@ public class ProdottoAmministrazioneController {
 
 
         return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
+    }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
