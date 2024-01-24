@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 <body>
 <h1>prova acquisto</h1>
 <form
@@ -20,16 +22,20 @@
         <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
             <ul>
                 <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+
             </ul>
         </div>
+        <h5 th:if="${errorMessage}" th:text="|${errorMessage} Put a number below:|"></h5> <h5 th:text="${acquisto.prodotto.quantità}"></h5>
     </div>
+    <input type="hidden" th:field="*{dataAcquisto}">
 
 
     <div class="col-12">
         <button type="submit" class="btn btn-warning">Save</button>
-        <a class="btn btn-danger" th:href="@{/category}">Cancel</a>
+        <a class="btn btn-danger" th:href="@{/shop}">Cancel</a>
     </div>
 </form>
+<th:block th:replace="fragments/resources :: script"></th:block>
 
 </body>
 </html>

@@ -47,6 +47,7 @@ public class AcquistoController {
             Acquisto newAcquisto = new Acquisto();
             newAcquisto.setProdotto(prodottoToBuy);
             newAcquisto.setDataAcquisto(LocalDate.now());
+
             model.addAttribute("acquisto", newAcquisto);
             return "shop/create";
         } else {
@@ -61,7 +62,15 @@ public class AcquistoController {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
             return "shop/create";
         }
+        if (formAcquisto.getQuantità()>formAcquisto.getProdotto().getQuantità()){
+            model.addAttribute("errorMessage", "There is not enough quantity in stock.");
+
+            return "shop/create";
+        }
+        formAcquisto.getProdotto().setQuantità(formAcquisto.getProdotto().getQuantità() - formAcquisto.getQuantità());
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
+
+
         return "redirect:/shop";
     }
 
