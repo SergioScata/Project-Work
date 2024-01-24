@@ -1,1 +1,4 @@
-INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(10, 2, 'carina', 'https://www.diamondcentre.it/24819/penna-a-sfera-montblanc-montblanc-2.jpg', 'penna');
+INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(2, 200, 'carina', 'https://www.diamondcentre.it/24819/penna-a-sfera-montblanc-montblanc-2.jpg', 'penna');
+INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(5, 250, 'carina', 'https://www.diamondcentre.it/24819/penna-a-sfera-montblanc-montblanc-2.jpg', 'cartoline');
+INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(7, 300, ' la tazza in ceramica è personalizzata con il logo del Museo Egizio.', 'https://shop.museoegizio.it/media/catalog/product/cache/7a8ec44ad576ba30cfc5b61d0c386784/t/a/tazza_me.jpg', 'tazze');
+INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(20, 400, 'Libri che ripercorrono le varie epoche', 'https://miramare.cultura.gov.it/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-23-at-14.53.38-3-1080x675.jpeg', 'libri');
