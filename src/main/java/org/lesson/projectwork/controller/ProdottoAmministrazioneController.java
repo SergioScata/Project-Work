@@ -50,14 +50,14 @@ public class ProdottoAmministrazioneController {
     public String create(Model model) {
         Prodotto prodotto = new Prodotto();
         model.addAttribute("prodotto", prodotto);
-        return "shop/amministrazione/create";
+        return "shop/amministrazione/edit";
     }
 
     @PostMapping("/create")
     public String create2(@Valid @ModelAttribute("prodotto") Prodotto formProdotto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("prodotto", prodottoRepository.findAll());
-            return "recipe/create";
+            return "amministrazione/edit";
         }
         Prodotto savedProdotto = prodottoRepository.save(formProdotto);
         return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
