@@ -31,6 +31,27 @@ public class ProdottoAmministrazioneController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
         }
     }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+        Prodotto prodotto = new Prodotto();
+
+        model.addAttribute("prodotto", prodotto);
+        return "shop/amministrazione/create";
+    }
+
+    @PostMapping("/create")
+    public String create2(@Valid @ModelAttribute("prodotto") Prodotto formProdotto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("prodotto", prodottoRepository.findAll());
+
+            return "recipe/create";
+        }
+        Prodotto savedProdotto = prodottoRepository.save(formProdotto);
+
+
+        return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
+
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         Optional<Prodotto> result = prodottoRepository.findById(id);
