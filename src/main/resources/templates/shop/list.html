@@ -79,7 +79,7 @@
                                 <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
                             </td>
                             <td>
-                            <a class="btn btn-warning margine" th:href="@{/shop/create/{id}(id=${prodotto.id})}">Aggiungi :'(</a>
+                            <a class="btn btn-warning margine" th:href="@{/shop/create(prodottoId=${prodotto.id})}">Aggiungi :'(</a>
                             </td>
                         </a>
                     </div>

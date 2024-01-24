@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Table
 @Entity
@@ -22,6 +23,8 @@ public class Prodotto {
     @Min(1)
     private BigDecimal prezzo;
     private Integer quantità;
+    @OneToMany(mappedBy = "prodotto")
+    private List<Acquisto> acquisto;
 
     public Integer getId() {
         return id;
@@ -41,6 +44,14 @@ public class Prodotto {
 
     public String getNome() {
         return nome;
+    }
+
+    public List<Acquisto> getAcquisto() {
+        return acquisto;
+    }
+
+    public void setAcquisto(List<Acquisto> acquisto) {
+        this.acquisto = acquisto;
     }
 
     public void setNome(String nome) {

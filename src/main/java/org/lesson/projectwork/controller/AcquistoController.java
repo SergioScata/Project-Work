@@ -46,7 +46,6 @@ public class AcquistoController {
             model.addAttribute("prodotto", prodottoToBuy);
             Acquisto newAcquisto = new Acquisto();
             newAcquisto.setProdotto(prodottoToBuy);
-            prodottoToBuy.setQuantità(prodottoToBuy.getQuantità() - newAcquisto.getQuantità());
             newAcquisto.setDataAcquisto(LocalDate.now());
             model.addAttribute("acquisto", newAcquisto);
             return "shop/create";
@@ -59,10 +58,11 @@ public class AcquistoController {
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("acquisto") Acquisto formAcquisto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("prodotto", formAcquisto.getProdotto());
             return "shop/create";
         }
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
-        return "redirect:/shop/list";
+        return "redirect:/shop";
     }
 
 
