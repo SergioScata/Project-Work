@@ -12,13 +12,26 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/templates/shop/amministrazione")
+@RequestMapping("/shop/amministrazione")
 public class ProdottoAmministrazioneController {
     @Autowired
     private ProdottoRepository prodottoRepository;
+    @GetMapping
+    public String index(@RequestParam(name ="keyword", required = false) String searchKeyword, Model model) {
+        List<Prodotto> prodottoList;
+        if (searchKeyword != null ){
+            prodottoList= prodottoRepository.findByNameContaining(searchKeyword);
+        }else {
+            prodottoList = prodottoRepository.findAll();
+        }
+        model.addAttribute("prodottoList", prodottoList);
+        model.addAttribute("preloadSearch", searchKeyword);
+        return "amministrazione/list";
+    }
 
     @GetMapping("/show/{id}")
     public String show(@PathVariable Integer id, Model model) {
@@ -26,7 +39,7 @@ public class ProdottoAmministrazioneController {
         if (result.isPresent()) {
             Prodotto prodotto = result.get();
             model.addAttribute("prodotto", prodotto);
-            return "/show/" + id;
+            return "amministrazione/show";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
         }

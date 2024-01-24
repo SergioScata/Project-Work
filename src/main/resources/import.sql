@@ -1,1 +1,1 @@
-INSERT INTOprodotto(prezzo, quantità, descrizione, foto, nome)VALUES(10, 2, 'carina', 'https://www.diamondcentre.it/24819/penna-a-sfera-montblanc-montblanc-2.jpg', 'penna');
+INSERT INTO prodotto(prezzo, quantità, descrizione, foto, nome)VALUES(10, 2, 'carina', 'https://www.diamondcentre.it/24819/penna-a-sfera-montblanc-montblanc-2.jpg', 'penna');
