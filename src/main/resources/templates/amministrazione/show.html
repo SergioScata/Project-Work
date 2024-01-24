@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
-<body>
+
+<header class="container-fluid g-0">
+    <nav th:replace="fragments/navbar.html :: navbar('amministrazione')"></nav>
+</header>
+
+<body class="">
 
 <h1>Show</h1>
 <div class="container">

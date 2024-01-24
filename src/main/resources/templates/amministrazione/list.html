@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
-<body class="container">
 
-<h1>List</h1>
-
-<div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
-     class="bg-body-secondary  bd-example-toasts rounded-3">
-    <div class="toast-container p-3 translate-middle-x" id="toastPlacement"
-         data-original-class="toast-container p-3">
-        <div class="toast fade show">
-            <div class="toast-header">
-                <i class="fa-solid fa-pizza-slice"></i>
-                <strong class="me-auto">Museo alert</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" th:text="${redirectMessage}"></div>
-        </div>
-    </div>
-</div>
+<header class="container-fluid g-0">
+    <nav th:replace="fragments/navbar.html :: navbar('amministrazione')"></nav>
+</header>
+<body>
 
 <main class="container">
+
+    <h1>List</h1>
+
+    <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
+         class="bg-body-secondary  bd-example-toasts rounded-3">
+        <div class="toast-container p-3 translate-middle-x" id="toastPlacement"
+             data-original-class="toast-container p-3">
+            <div class="toast fade show">
+                <div class="toast-header">
+                    <i class="fa-solid fa-pizza-slice"></i>
+                    <strong class="me-auto">Museo alert</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" th:text="${redirectMessage}"></div>
+            </div>
+        </div>
+    </div>
 
     <div>
 
         <div class="mt-4 mb-4 row">
-            <div class="col-7">
+            <div class="col-8">
                 <h2>Catalogo Prodotti</h2>
             </div>
 
-            <form class="col-4" id="prodotto-search" th:action="@{/amministrazione}" method="get">
+            <form class="col-3" id="prodotto-search" th:action="@{/amministrazione}" method="get">
                 <div class="input-group">
                     <input class="form-control" type="text" name="keyword" id="keyword"
                            placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
@@ -39,7 +43,7 @@
             </form>
         </div>
 
-        <div th:if="${prodottoList.size == 0}">
+        <div th:if="${prodottoList.size == 0}" class="mt-5 pt-3 text-center">
             <h2>The list is empty</h2>
         </div>
 
@@ -57,7 +61,7 @@
 
                 <tbody>
                 <tr th:each="prodotto : ${prodottoList}">
-                    <td><img class="img-fluid shadow-lg img-list" th:src="@{${prodotto.foto}}"></td>
+                    <td class="img-td-widt"><img class="img-fluid shadow-lg img-list" th:src="@{${prodotto.foto}}"></td>
                     <td class="fw-normal" th:text="${prodotto.nome}"></td>
                     <td>
                         <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
