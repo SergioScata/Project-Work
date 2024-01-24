@@ -78,6 +78,9 @@
                             <td>
                                 <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
                             </td>
+                            <td>
+                            <a class="btn btn-warning margine" th:href="@{/shop/create/{id}(id=${prodotto.id})}">Aggiungi :'(</a>
+                            </td>
                         </a>
                     </div>
                 </tr>
@@ -87,18 +90,15 @@
             </table>
         </div>
 
-        <div class="col-12 col-lg-3 mt-2">
-            <a class="btn btn-primary" th:href="@{/amministrazione/create}">Aggiungi un nuovo prodotto</a>
-        </div>
+
     </div>
 
 </main>
-
-
-<th:block th:replace="fragments/resources :: script"></th:block>
-</body>
-</html>
 <a class="btn btn-warning margine" th:href="@{/acquisto/create}">Aggiungi :'(</a>
+
+
+
+
 
 
 <th:block th:replace="fragments/resources :: script"></th:block>

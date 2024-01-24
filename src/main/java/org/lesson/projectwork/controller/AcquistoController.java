@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +47,9 @@ public class AcquistoController {
             Acquisto newAcquisto = new Acquisto();
             newAcquisto.setProdotto(prodottoToBuy);
             prodottoToBuy.setQuantità(prodottoToBuy.getQuantità() - newAcquisto.getQuantità());
+            newAcquisto.setDataAcquisto(LocalDate.now());
             model.addAttribute("acquisto", newAcquisto);
-            return "shop/acquisto";
+            return "shop/create";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "prodotto with id " + prodottoId + " not found");
@@ -57,7 +59,7 @@ public class AcquistoController {
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("acquisto") Acquisto formAcquisto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "shop/acquisto";
+            return "shop/create";
         }
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
         return "redirect:/shop/list";

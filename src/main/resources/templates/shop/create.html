@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+<body>
+<h1>prova acquisto</h1>
+<form
+        id="create-acquisto"
+        method="post"
+        th:object="${acquisto}"
+        th:action="@{/shop/create}"
+        class="row gy-3"
+>
+
+
+    <div class="col-6">
+        <label class="form-label logocolor" for="quantità">quantità</label>
+        <input class="form-control" type="text" id="quantità" th:field="*{quantità}"
+               th:errorClass="is-invalid">
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-warning">Save</button>
+        <a class="btn btn-danger" th:href="@{/category}">Cancel</a>
+    </div>
+</form>
+
+</body>
+</html>
