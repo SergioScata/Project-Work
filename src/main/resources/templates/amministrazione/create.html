@@ -2,10 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
-<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 <body>
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
-<h1>modifica</h1>
+<main class="container">
+    <h1 th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
+
+    <form id="ingredients-create" class="row"
+          th:with="url=${prodotto.id == null ? '/amministrazione/create' : '/amministrazione/edit/' + prodotto.id}"
+          th:action="@{${url}}"
+          th:object="${prodotto}"
+          method="post">
+        <div class="col-6">
+            <label class="form-label" for="nome">Nome</label>
+            <input class="form-control" type="text" id="nome" th:field="*{nome}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('nome')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
 
 
 <th:block th:replace="fragments/resources :: script"></th:block>
