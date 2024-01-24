@@ -2,9 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
-<header class="container-fluid g-0">
-    <nav th:replace="fragments/navbar.html :: navbar('amministrazione')"></nav>
-</header>
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 <body>
 
 <main class="container">
@@ -61,15 +59,22 @@
 
                 <tbody>
                 <tr th:each="prodotto : ${prodottoList}">
-                    <td class="img-td-widt"><img class="img-fluid shadow-lg img-list" th:src="@{${prodotto.foto}}"></td>
-                    <td class="fw-normal" th:text="${prodotto.nome}"></td>
-                    <td>
-                        <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
-                    </td>
-                    <td>
-                        <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
-                    </td>
+                    <div>
+                        <a th:href="@{/amministrazione/show}">
+                            <td class="img-td-widt"><img class="img-fluid img-list" th:src="@{${prodotto.foto}}">
+                            </td>
+                            <td class="fw-normal" th:text="${prodotto.nome}"></td>
+                            <td>
+                                <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
+                            </td>
+                            <td>
+                                <div class="badge text-bg-success" th:text="${prodotto.quantità}"></div>
+                            </td>
+                        </a>
+                    </div>
                 </tr>
+
+
                 </tbody>
             </table>
         </div>

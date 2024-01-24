@@ -2,30 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<nav th:fragment="navbar(area)" class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}"><img class="ms-2" style="width:60px" src="../museum-logo.png"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" th:classappend="${area == 'shop' ? 'active' : ''}"
-                       th:href="@{/shop}">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:classappend="${area == 'prodotti' ? 'active' : ''}"
-                       th:href="@{/prodotti}">Prodotti</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:classappend="${area == 'amministrazione' ? 'active' : ''}"
-                       th:href="@{/amministrazione}">Amministrazione</a>
-                </li>
-            </ul>
+<header th:fragment="navbar(area)" class="container-fluid g-0 sticky-top">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/shop}"><img class="ms-2" style="width:60px"
+                                                            src="../museum-logo.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${area == 'shop' ? 'active' : ''}"
+                           th:href="@{/shop}">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${area == 'prodotti' ? 'active' : ''}"
+                           th:href="@{/prodotti}">Prodotti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${area == 'amministrazione' ? 'active' : ''}"
+                           th:href="@{/amministrazione}">Amministrazione</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 </body>
 </html>

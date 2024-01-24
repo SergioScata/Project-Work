@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
+
 <body>
 <h1>prova</h1>
-<a class="btn btn-warning margine" th:href="@{/acqui/create}">Aggiungi la tua pizza</a>
-
+<a class="btn btn-warning margine" th:href="@{/acqui/create}">Aggiungi :'(</a>
 
 
 <th:block th:replace="fragments/resources :: script"></th:block>
