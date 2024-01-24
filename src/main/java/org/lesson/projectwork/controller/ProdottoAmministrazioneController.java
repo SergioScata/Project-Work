@@ -97,7 +97,7 @@ public class ProdottoAmministrazioneController {
         if (result.isPresent()) {
             prodottoRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getNome() + " è stato cancellato!");
-            return "redirect:/amministrazione/list";
+            return "redirect:/amministrazione";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found!");
         }
