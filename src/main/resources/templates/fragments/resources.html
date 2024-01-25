@@ -13,6 +13,29 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title th:text="${title}"></title>
+
+
+
+    <style>
+        .chatbot-toggler {
+            position: fixed;
+            bottom: 30px;
+            right: 35px;
+            outline: none;
+            border: none;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: url('/IAnubi.png');
+            background-size: contain;
+            transition: all 0.2s ease;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -69,5 +92,8 @@
         </footer>
     </div>
 </div>
+
+
+
 
 </html>

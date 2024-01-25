@@ -19,8 +19,8 @@ const createChatLi = (message, className) => {
 }
 
 const generateResponse = (chatElement) => {
-    //const API_URL = "https://api.openai.com/v1/chat/completions";
-    const API_URL = "http://localhost:1234/v1/chat/completions";
+    const API_URL = "https://api.openai.com/v1/chat/completions";
+    //const API_URL = "http://localhost:1234/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
 
     // Define the properties and message for the API request
@@ -31,9 +31,9 @@ const generateResponse = (chatElement) => {
             "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
-            //model: "gpt-3.5-turbo",
+            model: "gpt-3.5-turbo",
             messages: [
-            { role: "system", content: "Tu sei un assistente virtuale di un sito web di nome Pineapple che vende articoli tecnologici. Il sito e il brand Pineapple è stato creato da Francesco Barretta, Valentina Petrilli, Federico Mantovani, Nicolò Ayroldi e Fabrizio Mattone. Se l'utente vuole delle informazioni sul sito, tu gliele darai e lo aiuterai anche a trovare le categorie e le pagine a cui è interessato l'utente."},
+            { role: "system", content: "Tu sei un Assistente Virtuale di un sito web di un museo di nome Museum."},
             { role: "user", content: userMessage }],
         })
     }

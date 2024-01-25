@@ -40,7 +40,7 @@ width: 300px;
 }
 */
 
-
+/*
 .chatbot-toggler {
     position: fixed;
     bottom: 30px;
@@ -54,10 +54,12 @@ width: 300px;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-image: url('../public/IAnubi.png');
+    background-image: url('/public/IAnubi.png');
     background-size: contain;
     transition: all 0.2s ease;
 }
+
+*/
 
 body.show-chatbot .chatbot-toggler {
     transform: rotate(10deg);
