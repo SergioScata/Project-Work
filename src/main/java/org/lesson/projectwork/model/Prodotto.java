@@ -26,6 +26,17 @@ public class Prodotto {
     @OneToMany(mappedBy = "prodotto")
     private List<Acquisto> acquisto;
 
+    public List<Assortimento> getAssortimento() {
+        return assortimento;
+    }
+
+    public void setAssortimento(List<Assortimento> assortimento) {
+        this.assortimento = assortimento;
+    }
+
+    @OneToMany(mappedBy = "prodotto")
+    private List<Assortimento> assortimento;
+
     public Integer getId() {
         return id;
     }
