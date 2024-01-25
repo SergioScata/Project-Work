@@ -6,7 +6,7 @@
 
 <body>
 <main class="container h-100">
-    <h1 class="mb-5 mt-3">Shop <span th:text="${prodotto.nome}"></span></h1>
+
 
     <form
             id="create-acquisto"
@@ -16,6 +16,7 @@
             class="row gy-3"
     >
         <input type="hidden" th:field="*{prodotto}">
+        <h1 class="mb-5 mt-3">Shop <span th:text="${prodotto.nome}"></span></h1>
 
         <div class="row"></div>
 
@@ -37,9 +38,11 @@
 
                 </ul>
             </div>
-            <h5 th:if="${errorMessage}" th:text="|${errorMessage} Put a number below:|"></h5> <h5
+             <h5
                 th:text="${acquisto.prodotto.quantità}"></h5>
+            <h5 th:if="${errorMessage}" th:text="${errorMessage}"></h5>
         </div>
+
         <input type="hidden" th:field="*{dataAcquisto}">
 
 

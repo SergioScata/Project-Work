@@ -63,6 +63,7 @@ public class AcquistoController {
             return "shop/create";
         }
         if (formAcquisto.getQuantità()>formAcquisto.getProdotto().getQuantità()){
+            model.addAttribute("prodotto", formAcquisto.getProdotto());
             model.addAttribute("errorMessage", "There is not enough quantity in stock.");
 
             return "shop/create";
