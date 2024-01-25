@@ -7,7 +7,6 @@
 <body>
 
 <main class="container">
-    <h1>List</h1>
     <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
          class="bg-body-secondary  bd-example-toasts rounded-3">
         <div class="toast-container p-3 translate-middle-x" id="toastPlacement"
@@ -44,6 +43,8 @@
             <h2>The list is empty</h2>
         </div>
 
+        <!--list-->
+        <!--
         <div class="row">
 
             <table class="table table-striped" th:unless="${prodottoList.size == 0}">
@@ -77,10 +78,13 @@
                 </tr>
                 </tbody>
             </table>
+            -->
+
+            <!--cards-->
 
             <div class="row g-5 mb-5">
                 <div class="col-4 " th:each="prodotto : ${prodottoList} ">
-                    <a th:href="@{/shop/create(prodottoId=${prodotto.id})}" class="text-decoration-none text-dark">
+                    <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
                         <div class="card border-0 shadow">
                             <img th:src="@{${prodotto.foto}}" class=" img-fluid object-fit-contain"
                                  alt="prodotto" style="height: 200px;">

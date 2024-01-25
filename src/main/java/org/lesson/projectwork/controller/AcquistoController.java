@@ -50,8 +50,8 @@ public class AcquistoController {
             newAcquisto.setProdotto(prodottoToBuy);
             newAcquisto.setDataAcquisto(LocalDate.now());
             newAcquisto.setPrezzoSingolo(prodottoToBuy.getPrezzo());
-            Random random= new Random();
-            int codiceRandom =(random.nextInt(100000,999999));
+            Random random = new Random();
+            int codiceRandom = (random.nextInt(100000, 999999));
             newAcquisto.setCodice(Integer.valueOf(codiceRandom));
             model.addAttribute("acquisto", newAcquisto);
             return "shop/create";
@@ -67,19 +67,31 @@ public class AcquistoController {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
             return "shop/create";
         }
-        if (formAcquisto.getQuantità()>formAcquisto.getProdotto().getQuantità()){
+        if (formAcquisto.getQuantità() > formAcquisto.getProdotto().getQuantità()) {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
             model.addAttribute("errorMessage", "There is not enough quantity in stock.");
 
             return "shop/create";
         }
         formAcquisto.getProdotto().setQuantità(formAcquisto.getProdotto().getQuantità() - formAcquisto.getQuantità());
-        BigDecimal newQuantità= BigDecimal.valueOf(formAcquisto.getQuantità());
+        BigDecimal newQuantità = BigDecimal.valueOf(formAcquisto.getQuantità());
         formAcquisto.setPrezzoTotale(formAcquisto.getPrezzoSingolo().multiply(newQuantità));
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
 
 
         return "redirect:/shop";
+    }
+
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable Integer id, Model model) {
+        Optional<Prodotto> result = prodottoRepository.findById(id);
+        if (result.isPresent()) {
+            Prodotto prodotto = result.get();
+            model.addAttribute("prodotto", prodotto);
+            return "shop/show";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
+        }
     }
 
 
