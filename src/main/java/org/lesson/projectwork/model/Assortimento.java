@@ -12,7 +12,6 @@ public class Assortimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate dataAssortimento;
-    private String prodottoAcquistato;
     private Integer quantitàAcquistata;
     private String nomeFornitore;
     private BigDecimal prezzoSingolo;
@@ -45,13 +44,6 @@ public class Assortimento {
         this.dataAssortimento = dataAssortimento;
     }
 
-    public String getProdottoAcquistato() {
-        return prodottoAcquistato;
-    }
-
-    public void setProdottoAcquistato(String prodottoAcquistato) {
-        this.prodottoAcquistato = prodottoAcquistato;
-    }
 
     public Integer getQuantitàAcquistata() {
         return quantitàAcquistata;

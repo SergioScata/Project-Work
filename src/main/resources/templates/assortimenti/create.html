@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
+<body>
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+
+<main class="container mt-4" style="min-height: 720px;">
+    <input type="hidden" th:field="*{prodotto}">
+
+
+    <form id="ingredients-create" class="row"
+          th:action="@{/assortimenti/create}"
+          th:object="@{assortimento}"
+          method="post">
+        <div class="col-6">
+            <label class="form-label" for="quantitàAcquistata"><h6>quantità Acquistata</h6></label>
+            <input class="form-control" type="text" id="quantitàAcquistata" th:field="*{quantitàAcquistata}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantitàAcquistata')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('quantitàAcquistata')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6"></div>
+
+        <div class="mt-3 col-4">
+            <label class="form-label" for="nomeFornitore"><h6>nome Fornitore</h6></label>
+            <input class="form-control" type="number" step="0.01" id="nomeFornitore" th:field="*{nomeFornitore}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('nomeFornitore')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('nomeFornitore')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="col-12 mt-4 mb-4">
+            <button type="submit" class="btn btn-dark me-2">Save</button>
+            <a class="btn btn-dark" th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}">Cancel</a>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
 </body>
 </html>

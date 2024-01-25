@@ -28,15 +28,12 @@ public class AssortimentoController {
     @Autowired
     private ProdottoRepository prodottoRepository;
     @GetMapping
-    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
-        List<Prodotto> prodottoList;
-        if (searchKeyword != null) {
-            prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
-        } else {
-            prodottoList = prodottoRepository.findAll();
-        }
-        model.addAttribute("prodottoList", prodottoList);
-        model.addAttribute("preloadSearch", searchKeyword);
+    public String index( Model model) {
+        List<Assortimento> assortimentoList;
+
+        assortimentoList = assortimentoRepository.findAll();
+
+        model.addAttribute("assortimentiList", assortimentoList);
         return "assortimenti/list";
     }
 
@@ -47,9 +44,7 @@ public class AssortimentoController {
             Prodotto prodottoToBuy = result.get();
             model.addAttribute("prodotto", prodottoToBuy);
             Assortimento newAssortimento = new Assortimento();
-            newAssortimento.setProdotto(prodottoToBuy);
-            newAssortimento.setDataAssortimento(LocalDate.now());
-            newAssortimento.setPrezzoSingolo(prodottoToBuy.getPrezzo());
+
             model.addAttribute("assortimento", newAssortimento);
             return "assortimenti/create";
         } else {
@@ -67,6 +62,8 @@ public class AssortimentoController {
         if (formAssortimento.getQuantitàAcquistata()>formAssortimento.getProdotto().getQuantità()){
             return "assortimenti/create";
         }
+        formAssortimento.setDataAssortimento(LocalDate.now());
+        formAssortimento.setPrezzoSingolo(formAssortimento.getProdotto().getPrezzo());
         formAssortimento.getProdotto().setQuantità(formAssortimento.getProdotto().getQuantità() + formAssortimento.getQuantitàAcquistata());
         BigDecimal newQuantità = BigDecimal.valueOf(formAssortimento.getQuantitàAcquistata());
         formAssortimento.setPrezzoTotale(formAssortimento.getPrezzoSingolo().multiply(newQuantità));
