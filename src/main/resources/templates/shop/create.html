@@ -3,38 +3,74 @@
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
+
 <body>
-<h1>prova acquisto</h1>
-<form
-        id="create-acquisto"
-        method="post"
-        th:object="${acquisto}"
-        th:action="@{/shop/create}"
-        class="row gy-3"
->
-    <input type="hidden" th:field="*{prodotto}">
+<main class="container h-100">
+    <h1 class="mb-5 mt-3">Shop <span th:text="${prodotto.nome}"></span></h1>
 
+    <form
+            id="create-acquisto"
+            method="post"
+            th:object="${acquisto}"
+            th:action="@{/shop/create}"
+            class="row gy-3"
+    >
+        <input type="hidden" th:field="*{prodotto}">
 
-    <div class="col-6">
-        <label class="form-label logocolor" for="quantità">quantità</label>
-        <input class="form-control" type="text" id="quantità" th:field="*{quantità}"
-               th:errorClass="is-invalid">
-        <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
-            <ul>
-                <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+        <div class="row"></div>
 
-            </ul>
+        <div class="img-td-width col-4"><img
+                class="img-fluid w-75 mt-3" th:src="@{${prodotto.foto}}">
         </div>
-        <h5 th:if="${errorMessage}" th:text="|${errorMessage} Put a number below:|"></h5> <h5 th:text="${acquisto.prodotto.quantità}"></h5>
-    </div>
-    <input type="hidden" th:field="*{dataAcquisto}">
 
 
-    <div class="col-12">
-        <button type="submit" class="btn btn-warning">Save</button>
-        <a class="btn btn-danger" th:href="@{/shop}">Cancel</a>
+        <div class="col-7">
+            <label class="form-label logocolor mb-3" for="quantità"><h6>Seleziona quantità</h6></label>
+            <input class="form-control border-bottom-0 border-start-0 w-25" type="number" id="quantità"
+                   th:field="*{quantità}"
+                   th:errorClass="is-invalid">
+
+            <h6 class="mt-3">Disponibilità</h6>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+
+                </ul>
+            </div>
+            <h5 th:if="${errorMessage}" th:text="|${errorMessage} Put a number below:|"></h5> <h5
+                th:text="${acquisto.prodotto.quantità}"></h5>
+        </div>
+        <input type="hidden" th:field="*{dataAcquisto}">
+
+
+        <div class="col-8" style="margin-left: 250px;">
+            <button type="submit" class="btn btn-dark">Conferma</button>
+            <a class="btn btn-dark" th:href="@{/shop}">Cancella</a>
+        </div>
+    </form>
+</main>
+
+<footer class="container-fluid bg-dark g-0">
+    <div class="container-fluid bg-dark position-absolute bottom-0 ">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 ">
+            <p class="col-md-4 mb-0 ps-3 text-light">© Museum, Inc</p>
+
+            <a href="/"
+               class="col-md-4 d-flex align-items-center justify-content-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="ms-2" style="width:60px" src="/museum-logo.png">
+            </a>
+
+            <ul class="nav col-md-4 justify-content-end text-light pe-3">
+                <li class="nav-item "><a href="#" class="nav-link px-2 text-light">Home</a></li>
+                <li class="nav-item "><a href="#" class="nav-link px-2 text-light">Features</a></li>
+                <li class="nav-item "><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
+                <li class="nav-item "><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+                <li class="nav-item "><a href="#" class="nav-link px-2 text-light">About</a></li>
+            </ul>
+        </footer>
     </div>
-</form>
+</footer>
+
 <th:block th:replace="fragments/resources :: script"></th:block>
 
 </body>
