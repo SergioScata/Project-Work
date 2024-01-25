@@ -15,7 +15,17 @@ public class Assortimento {
     private String prodottoAcquistato;
     private Integer quantitàAcquistata;
     private String nomeFornitore;
-    private BigDecimal prezzo;
+    private BigDecimal prezzoSingolo;
+    private BigDecimal prezzoTotale;
+
+    public BigDecimal getPrezzoTotale() {
+        return prezzoTotale;
+    }
+
+    public void setPrezzoTotale(BigDecimal prezzoTotale) {
+        this.prezzoTotale = prezzoTotale;
+    }
+
     @ManyToOne
     private Prodotto prodotto;
 
@@ -59,12 +69,12 @@ public class Assortimento {
         this.nomeFornitore = nomeFornitore;
     }
 
-    public BigDecimal getPrezzo() {
-        return prezzo;
+    public BigDecimal getPrezzoSingolo() {
+        return prezzoSingolo;
     }
 
-    public void setPrezzo(BigDecimal prezzo) {
-        this.prezzo = prezzo;
+    public void setPrezzoSingolo(BigDecimal prezzoSingolo) {
+        this.prezzoSingolo = prezzoSingolo;
     }
 
     public Prodotto getProdotto() {

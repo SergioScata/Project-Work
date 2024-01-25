@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +49,7 @@ public class AssortimentoController {
             Assortimento newAssortimento = new Assortimento();
             newAssortimento.setProdotto(prodottoToBuy);
             newAssortimento.setDataAssortimento(LocalDate.now());
+            newAssortimento.setPrezzoSingolo(prodottoToBuy.getPrezzo());
             model.addAttribute("assortimento", newAssortimento);
             return "assortimenti/create";
         } else {
@@ -66,6 +68,8 @@ public class AssortimentoController {
             return "assortimenti/create";
         }
         formAssortimento.getProdotto().setQuantità(formAssortimento.getProdotto().getQuantità() + formAssortimento.getQuantitàAcquistata());
+        BigDecimal newQuantità = BigDecimal.valueOf(formAssortimento.getQuantitàAcquistata());
+        formAssortimento.setPrezzoTotale(formAssortimento.getPrezzoSingolo().multiply(newQuantità));
         Assortimento assortimentoToSave = assortimentoRepository.save(formAssortimento);
         return "redirect:/assortimenti";
     }
