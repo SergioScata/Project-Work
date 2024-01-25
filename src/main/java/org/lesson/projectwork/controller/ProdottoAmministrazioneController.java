@@ -1,7 +1,9 @@
 package org.lesson.projectwork.controller;
 
 import jakarta.validation.Valid;
+import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Prodotto;
+import org.lesson.projectwork.repository.AcquistoRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ import java.util.Optional;
 public class ProdottoAmministrazioneController {
     @Autowired
     private ProdottoRepository prodottoRepository;
+    @Autowired
+    private AcquistoRepository acquistoRepository;
 
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
@@ -94,8 +98,10 @@ public class ProdottoAmministrazioneController {
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Optional<Prodotto> result = prodottoRepository.findById(id);
+        Prodotto prodottoToDelete= result.get();
         if (result.isPresent()) {
             prodottoRepository.deleteById(id);
+
             redirectAttributes.addFlashAttribute("redirectMessage", result.get().getNome() + " è stato cancellato!");
             return "redirect:/amministrazione";
         } else {
