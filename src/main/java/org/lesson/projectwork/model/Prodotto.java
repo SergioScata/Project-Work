@@ -81,4 +81,13 @@ public class Prodotto {
     public void setQuantità(Integer quantità) {
         this.quantità = quantità;
     }
+    @PreRemove
+    public void preRemove() {
+        if (acquisto != null) {
+            acquisto.forEach(a -> a.setProdotto(null));
+        }
+    }
+
+
+
 }
