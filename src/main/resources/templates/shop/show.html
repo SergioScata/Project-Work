@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Show')"></head>
+
+<body class="">
+<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
+
+<main>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-8 mt-4">
+                <img class="mh-500 set-dimension" style="width:500px" th:src="@{${prodotto.foto}}">
+            </div>
+
+            <div class="col-4  mt-4 pt-5 centro">
+                <div>
+                    <h1 class="text-center pb-3 mt-1" th:text="${prodotto.nome}"></h1>
+                </div>
+                <h5 class=" text-center pb-2 mt-1"><i class="fa-solid fa-landmark"></i></h5>
+                <h6 class=" text-center pb-3" th:text="${prodotto.descrizione}"></h6>
+
+
+                <div class="row text-center justify-content-around">
+                    <div class="col-5 text-center" th:text="|Prezzo: ${prodotto.prezzo} €|"></div>
+                    <div class="col-5 text-center" th:text="|${prodotto.quantità} disponibili|"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="text-center mt-5">
+            <a class="text-decoration-none text-dark" th:href="@{/shop}"><i
+                    class="fa-solid fa-circle-chevron-left"></i> Ritorna alla lista </a>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>

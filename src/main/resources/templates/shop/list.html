@@ -24,7 +24,7 @@
 
     <div>
 
-        <div class="mt-4 mb-4 row">
+        <div class="mt-5 mb-4 row justify-content-between">
             <div class="col-8">
                 <h2>Catalogo Prodotti</h2>
             </div>
@@ -33,7 +33,7 @@
                 <div class="input-group">
                     <input class="form-control" type="text" name="keyword" id="keyword"
                            placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
-                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>
+                    <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </form>
@@ -83,7 +83,7 @@
             <!--cards-->
 
             <div class="row g-5 mb-5">
-                <div class="col-4 " th:each="prodotto : ${prodottoList} ">
+                <div class="col-lg-4 col-12" th:each="prodotto : ${prodottoList} ">
                     <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
                         <div class="card border-0 shadow">
                             <img th:src="@{${prodotto.foto}}" class=" img-fluid object-fit-contain"
