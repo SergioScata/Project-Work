@@ -26,11 +26,11 @@
 
         <div class="mt-5 mb-4 row justify-content-between">
             <div class="col-8">
-                <h2>Catalogo Prodotti Lista</h2>
+                <h2>Catalogo Prodotti Tabella</h2>
             </div>
-            <form class="col-3" id="typePage-selection" th:action="@{/shop}" method="get">
+            <form class="col-3" th:action="@{/shop}" method="get">
                 <div class="input-group">
-                    <input type="button" class="btn btn-primary" th:value="${typePage}" id="typePageButton">
+                    <input type="submit" class="btn btn-primary" th:value="${typePage ? 'Lista' : 'Tabella'}">
                 </div>
             </form>
 

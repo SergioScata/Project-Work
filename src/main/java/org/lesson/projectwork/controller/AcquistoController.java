@@ -28,16 +28,32 @@ public class AcquistoController {
     private ProdottoRepository prodottoRepository;
 
     @GetMapping
-    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
+    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, @RequestParam(name = "typePage", required = false) boolean typePage, Model model) {
+
         List<Prodotto> prodottoList;
-        if (searchKeyword != null) {
-            prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
-        } else {
-            prodottoList = prodottoRepository.findAll();
+        if (typePage =false) {
+            if (searchKeyword != null) {
+                prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
+            } else {
+                prodottoList = prodottoRepository.findAll();
+            }model.addAttribute("prodottoList", prodottoList);
+            model.addAttribute("preloadSearch", searchKeyword);
+            model.addAttribute("typePage", typePage);
+            return "shop/list";
+
+
+        }else {
+            if (searchKeyword != null) {
+                prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
+            } else {
+                prodottoList = prodottoRepository.findAll();
+            }
+            model.addAttribute("prodottoList", prodottoList);
+            model.addAttribute("preloadSearch", searchKeyword);
+            model.addAttribute("typePage", typePage);
+            return "shop/table";
+
         }
-        model.addAttribute("prodottoList", prodottoList);
-        model.addAttribute("preloadSearch", searchKeyword);
-        return "shop/list";
     }
 
     @GetMapping("/create")
@@ -50,9 +66,7 @@ public class AcquistoController {
             newAcquisto.setProdotto(prodottoToBuy);
             newAcquisto.setDataAcquisto(LocalDate.now());
             newAcquisto.setPrezzoSingolo(prodottoToBuy.getPrezzo());
-            Random random = new Random();
-            int codiceRandom = (random.nextInt(100000, 999999));
-            newAcquisto.setCodice(Integer.valueOf(codiceRandom));
+
             model.addAttribute("acquisto", newAcquisto);
             return "shop/create";
         } else {
@@ -73,6 +87,9 @@ public class AcquistoController {
 
             return "shop/create";
         }
+        Random random = new Random();
+        int codiceRandom = (random.nextInt(100000, 999999));
+        formAcquisto.setCodice(Integer.valueOf(codiceRandom));
         formAcquisto.getProdotto().setQuantità(formAcquisto.getProdotto().getQuantità() - formAcquisto.getQuantità());
         BigDecimal newQuantità = BigDecimal.valueOf(formAcquisto.getQuantità());
         formAcquisto.setPrezzoTotale(formAcquisto.getPrezzoSingolo().multiply(newQuantità));
