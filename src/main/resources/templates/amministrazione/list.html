@@ -26,7 +26,7 @@
 
         <div class="mt-4 mb-4 row">
             <div class="col-8">
-                <h2>Catalogo Prodotti</h2>
+                <h1>Catalogo Prodotti</h1>
             </div>
 
             <form class="col-3" id="prodotto-search" th:action="@{/amministrazione}" method="get">
@@ -52,24 +52,27 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Quantità</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr th:each="prodotto : ${prodottoList}">
+                    <tr th:each="prodotto : ${prodottoList}"
+                    >
                         <div>
-                            <td class="img-td-widt"><a th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}"><img
+                            <td class="img-td-width "><a th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}"><img
                                     class="img-fluid img-list" th:src="@{${prodotto.foto}}">
                             </a></td>
-                            <td class="fw-normal" th:text="${prodotto.nome}"></td>
+                            <td class="fw-normal name-list-w"><h5 th:text="${prodotto.nome}"></h5></td>
                             <td>
-                                <div class="badge text-bg-success" th:text="${prodotto.prezzo} + ' ' + € "></div>
+                                <div class="badge text-dark"><h6 th:text="${prodotto.prezzo} + ' ' + € "></h6></div>
                             </td>
                             <td>
-                                <div class="badge "
-                                     th:classappend="${prodotto.quantità == 0 ? 'text-bg-danger' : prodotto.quantità < 51 ? 'text-bg-warning' : 'text-bg-success'}"
-                                     }
-                                     th:text="${prodotto.quantità}"></div>
+                                <div class="badge text-dark"><h6 th:text="${prodotto.quantità}"></h6></div>
+                            </td>
+                            <td>
+                                <i class="fa-solid fa-circle"
+                                   th:classappend="${prodotto.quantità == 0 ? 'text-danger' : prodotto.quantità < 51 ? 'text-warning' : 'text-success'}"></i>
                             </td>
                         </div>
                     </tr>

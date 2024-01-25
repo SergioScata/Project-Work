@@ -12,8 +12,13 @@ td{
     vertical-align: middle;
 }
 
-.img-td-widt {
+.img-td-width {
 width: 250px;
+height: 200px;
+}
+
+.name-list-w {
+width: 300px;
 }
 
 
