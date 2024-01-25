@@ -3,6 +3,7 @@ package org.lesson.projectwork.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -16,6 +17,12 @@ public class Acquisto{
    private Integer quantità;
    @ManyToOne
    private Prodotto prodotto;
+
+   private BigDecimal prezzoSingolo;
+
+   private Integer codice;
+
+   private BigDecimal prezzoTotale;
 
     public Integer getId() {
         return id;

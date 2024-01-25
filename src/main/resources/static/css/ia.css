@@ -1,40 +1,20 @@
-
-
-.img-list{
-    width: 200px;
-}
-
-th{
-    vertical-align: middle;
-}
-
-td{
-    vertical-align: middle;
-}
-
-.img-td-widt {
-width: 250px;
-}
+/* .ia_logo {
+    background: url('../../public/img/IAHelpLogo.png');
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+} */
 
 
 
+/* Import Google font - Poppins */
 
-
-
-
-
-/*     IA      */
-
-
-
-/*
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-*/
-
 
 .chatbot-toggler {
     position: fixed;
@@ -49,7 +29,7 @@ width: 250px;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: url('../public/IAnubi.png');
+    background: url('../../public/img/IAHelpLogo2-removebg-preview.png');
     background-size: contain;
     transition: all 0.2s ease;
 }
