@@ -22,7 +22,7 @@ public class Prodotto {
     @NotNull
     @Min(1)
     private BigDecimal prezzo;
-    private Integer quantità;
+    private Integer quantità = 0;
     @OneToMany(mappedBy = "prodotto")
     private List<Acquisto> acquisto;
 

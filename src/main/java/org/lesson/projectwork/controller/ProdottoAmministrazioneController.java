@@ -64,7 +64,7 @@ public class ProdottoAmministrazioneController {
             return "amministrazione/create";
         }
         Prodotto savedProdotto = prodottoRepository.save(formProdotto);
-        return "redirect:/shop/amministrazione/show/" + savedProdotto.getId();
+        return "redirect:/amministrazione/show/" + savedProdotto.getId();
     }
 
     @GetMapping("/edit/{id}")
