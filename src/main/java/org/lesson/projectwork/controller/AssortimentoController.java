@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +26,18 @@ public class AssortimentoController {
 
     @Autowired
     private ProdottoRepository prodottoRepository;
+    @GetMapping
+    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
+        List<Prodotto> prodottoList;
+        if (searchKeyword != null) {
+            prodottoList = prodottoRepository.findByNomeContaining(searchKeyword);
+        } else {
+            prodottoList = prodottoRepository.findAll();
+        }
+        model.addAttribute("prodottoList", prodottoList);
+        model.addAttribute("preloadSearch", searchKeyword);
+        return "assortimenti/list";
+    }
 
     @GetMapping("/create")
     public String create(@RequestParam(name = "prodottoId", required = true) Integer prodottoId, Model model) {
