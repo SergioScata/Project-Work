@@ -23,7 +23,6 @@ public class Acquisto{
    private Integer codice;
 
    private BigDecimal prezzoTotale;
-
     public Integer getId() {
         return id;
     }
@@ -57,7 +56,8 @@ public class Acquisto{
         this.prodotto = prodotto;
     }
 
-    public BigDecimal getPrezzoSingolo() {
+    public BigDecimal getPrezzoSingolo()
+    {prezzoSingolo=prodotto.getPrezzo();
         return prezzoSingolo;
     }
 

@@ -13,9 +13,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/shop")
@@ -47,7 +49,10 @@ public class AcquistoController {
             Acquisto newAcquisto = new Acquisto();
             newAcquisto.setProdotto(prodottoToBuy);
             newAcquisto.setDataAcquisto(LocalDate.now());
-
+            newAcquisto.setPrezzoSingolo(prodottoToBuy.getPrezzo());
+            Random random= new Random();
+            int codiceRandom =(random.nextInt(100000,999999));
+            newAcquisto.setCodice(Integer.valueOf(codiceRandom));
             model.addAttribute("acquisto", newAcquisto);
             return "shop/create";
         } else {
@@ -69,6 +74,8 @@ public class AcquistoController {
             return "shop/create";
         }
         formAcquisto.getProdotto().setQuantità(formAcquisto.getProdotto().getQuantità() - formAcquisto.getQuantità());
+        BigDecimal newQuantità= BigDecimal.valueOf(formAcquisto.getQuantità());
+        formAcquisto.setPrezzoTotale(formAcquisto.getPrezzoSingolo().multiply(newQuantità));
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
 
 
