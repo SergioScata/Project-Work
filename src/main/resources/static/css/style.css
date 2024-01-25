@@ -54,7 +54,7 @@ width: 300px;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: url('../public/IAnubi.png');
+    background-image: url('../public/IAnubi.png');
     background-size: contain;
     transition: all 0.2s ease;
 }
