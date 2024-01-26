@@ -71,7 +71,7 @@
         <section class="row justify-content-around g-5 mb-5 mt-4 ">
             <div  class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottoList} ">
                 <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
-                    <div class="img-hover bg-dark ">
+                    <div class="img-hover">
                     <img th:src="@{${prodotto.foto}}" class="" style="width: 200px;" alt="foto ">
                     </div>
                     <div class="text-hover ps-4 pe-2 py-1 background-card" style="min-width: 200px;">
