@@ -56,6 +56,7 @@ public class AssortimentoController {
 
             return "assortimenti/create";
         }
+        assortimento.setNome(assortimento.getProdotto().getNome());
 
         assortimento.setDataAssortimento(LocalDate.now());
         assortimento.setPrezzoSingolo(assortimento.getProdotto().getPrezzo());

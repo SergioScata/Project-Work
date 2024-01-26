@@ -97,7 +97,11 @@ public class Prodotto {
         if (acquisto != null) {
             acquisto.forEach(a -> a.setProdotto(null));
         }
+        if (assortimento != null) {
+            assortimento.forEach(a -> a.setProdotto(null));
+        }
     }
+
 
 
 
