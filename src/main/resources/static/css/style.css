@@ -29,6 +29,13 @@ width: 300px;
     width:auto;
 }
 
+.img-hover:hover{
+transform: scale(110%);
+}
+
+.text-hover:hover{
+            transform: scale(110%);
+}
 
 
 
