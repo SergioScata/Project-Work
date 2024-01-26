@@ -26,10 +26,10 @@
 
         <div class="mt-4 mb-4 row">
             <div class="col-8">
-                <h1>Rifornimenti</h1>
+                <h1>Transazioni utenti</h1>
             </div>
 
-            <form class="col-3" id="prodotto-search" th:action="@{/assortimenti}" method="get">
+            <form class="col-3" id="prodotto-search" th:action="@{/transazioni}" method="get">
                 <div class="input-group">
                     <input class="form-control" type="text" name="keyword" id="keyword"
                            placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
@@ -39,48 +39,48 @@
             </form>
         </div>
 
-        <div th:if="${assortimentiList.size == 0}" class="mt-5 pt-3 text-center">
+        <div th:if="${acquistoList.size == 0}" class="mt-5 pt-3 text-center">
             <h2>The list is empty</h2>
         </div>
 
         <div class="row">
 
             <div class="col-12 col-lg-8">
-                <table class="table table-striped mt-2" th:unless="${assortimentiList.size == 0}">
+                <table class="table table-striped mt-2" th:unless="${acquistoList.size == 0}">
                     <thead>
                     <tr>
-                        <th scope="col">DataAssortimento</th>
-                        <th scope="col">prodotto Acquistato</th>
-                        <th scope="col">Quantità Acquistato</th>
-                        <th scope="col">Nome fornitore</th>
-                        <th scope="col">prezzo 1 unità</th>
-                        <th scope="col">prezzo totale</th>
-                        <th scope="col"></th>
+                        <th scope="col">Codice transazione</th>
+                        <th scope="col ">Data Acquisto</th>
+                        <th scope="col ">Prodotto Acquistato</th>
+                        <th scope="col ">Quantità</th>
+                        <th scope="col ">prezzo unità</th>
+                        <th scope="col ">prezzo totale</th>
+
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr th:each="ass : ${assortimentiList}"
-                    >
-                        <div>
-                            <td class="fw-normal name-list-w"><h5 th:text="${ass.dataAssortimento}"></h5></td>
+                    <tr th:each="acq : ${acquistoList}">
+
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.nome}"></h6></div>
+                                <div class="fw-normal name-list-w "><h5 th:text="${acq.codice}"></h5></div>
+                            </td>
+                            <td >
+                                <div class="badge text-dark"><h6 th:text="${acq.dataAcquisto}"></h6></div></td>
+                            <td>
+                                <div class="badge text-dark "><h6 th:text="${acq.nome}"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.quantitàAcquistata}"></h6></div>
+                                <div class="badge text-dark "><h6 th:text="${acq.quantità}"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.nomeFornitore}"></h6></div>
+                                <div class="badge text-dark "><h6 th:text="${acq.prezzoSingolo}  + ' ' + € "></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.prezzoSingolo}  + ' ' + € "></h6></div>
-                            </td>
-                            <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.prezzoTotale}  + ' ' + € "></h6></div>
+                                <div class="badge text-dark "><h6 th:text="${acq.prezzoTotale}  + ' ' + € "></h6></div>
                             </td>
 
-                        </div>
+
                     </tr>
 
 
