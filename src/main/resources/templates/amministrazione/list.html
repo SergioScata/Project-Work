@@ -63,7 +63,10 @@
                             <td class="img-td-width "><a th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}"><img
                                     class="img-fluid img-list" th:src="@{${prodotto.foto}}">
                             </a></td>
-                            <td class="fw-normal name-list-w"><h5 th:text="${prodotto.nome}"></h5></td>
+                            <td class="fw-normal name-list-w"><a class="text-black text-decoration-none"
+                                                                 th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}">
+                                <h5
+                                        th:text="${prodotto.nome}"></h5></a></td>
                             <td>
                                 <div class="badge text-dark"><h6 th:text="${prodotto.prezzo} + ' ' + € "></h6></div>
                             </td>
