@@ -20,7 +20,7 @@ public class Prodotto {
     private String nome;
     private String descrizione;
     @NotNull
-    @Min(1)
+    @Min(0)
     private BigDecimal prezzo;
     private Integer quantità = 0;
     @OneToMany(mappedBy = "prodotto")

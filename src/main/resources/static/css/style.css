@@ -69,6 +69,8 @@ color: #E3AA54;
     margin-top: 600px;
     padding-left: 50px;
 }
+ body{
+    font-family: 'Cormorant Garamond', serif;}
 
 /*     IA      */
 
@@ -296,4 +298,5 @@ header h2 {
     .chatbot header span {
         display: block;
     }
+
 }
