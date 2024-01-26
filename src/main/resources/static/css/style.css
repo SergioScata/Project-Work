@@ -37,6 +37,15 @@ transform: scale(110%);
             transform: scale(110%);
 }
 
+body{
+    background-color: #222222;
+    color: white;
+}
+
+.background-card{
+    background-color: #282828;
+}
+
 
 
 
