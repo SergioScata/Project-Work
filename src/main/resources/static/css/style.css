@@ -37,7 +37,7 @@ transform: scale(112%)  !important;
             transform: scale(112%) !important;
 }
 
-body{
+body {
     background-color: #222222;
     color: white;
 }
@@ -65,7 +65,10 @@ color: #E3AA54;
     padding: 10px;
 }
 
-
+.margin-arrow{
+    margin-top: 600px;
+    padding-left: 50px;
+}
 
 
 

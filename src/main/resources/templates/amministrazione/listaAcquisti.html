@@ -5,7 +5,7 @@
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 <body class="position-relative">
 
-<main class="container">
+<main class="container" style="min-height: 720px;">
 
     <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
          class="bg-body-secondary  bd-example-toasts rounded-3">
@@ -25,7 +25,7 @@
     <div>
 
         <div class="mt-4 mb-4 row">
-            <div class="col-8">
+            <div class="col-8 gold-text">
                 <h1>Transazioni utenti</h1>
             </div>
 
@@ -62,23 +62,24 @@
                     <tbody>
                     <tr th:each="acq : ${acquistoList}">
 
-                            <td>
-                                <div class="fw-normal name-list-w "><h5 th:text="${acq.codice}"></h5></div>
-                            </td>
-                            <td >
-                                <div class="badge text-dark"><h6 th:text="${acq.dataAcquisto}"></h6></div></td>
-                            <td>
-                                <div class="badge text-dark "><h6 th:text="${acq.nome}"></h6></div>
-                            </td>
-                            <td>
-                                <div class="badge text-dark "><h6 th:text="${acq.quantità}"></h6></div>
-                            </td>
-                            <td>
-                                <div class="badge text-dark "><h6 th:text="${acq.prezzoSingolo}  + ' ' + € "></h6></div>
-                            </td>
-                            <td>
-                                <div class="badge text-dark "><h6 th:text="${acq.prezzoTotale}  + ' ' + € "></h6></div>
-                            </td>
+                        <td>
+                            <div class="fw-normal name-list-w "><h5 th:text="${acq.codice}"></h5></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark"><h6 th:text="${acq.dataAcquisto}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.nome}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.quantità}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.prezzoSingolo}  + ' ' + € "></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.prezzoTotale}  + ' ' + € "></h6></div>
+                        </td>
 
 
                     </tr>
