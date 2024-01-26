@@ -30,7 +30,7 @@ width: 300px;
 }
 
 .img-hover:hover{
-transform: scale(112%);
+transform: scale(112%)  !important;
 }
 
 .text-hover:hover{
@@ -55,6 +55,16 @@ color: #E3AA54;
  background-color: transparent !important;
  color: #E3AA54 !important;
 }
+
+.sticky-section {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Assicura che la sezione resti sopra gli altri elementi */
+    background-color: #fff;
+    padding: 10px;
+}
+
 
 
 
