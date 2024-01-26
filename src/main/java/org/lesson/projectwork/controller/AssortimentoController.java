@@ -38,36 +38,32 @@ public class AssortimentoController {
     }
 
     @GetMapping("/create")
-    public String create(@RequestParam(name = "prodottoId", required = true) Integer prodottoId, Model model) {
-        Optional<Prodotto> result = prodottoRepository.findById(prodottoId);
-        if (result.isPresent()) {
-            Prodotto prodottoToBuy = result.get();
-            model.addAttribute("prodotto", prodottoToBuy);
+    public String create( Model model) {
+        List<Prodotto>prodottoList=prodottoRepository.findAll();
+
             Assortimento newAssortimento = new Assortimento();
+            model.addAttribute("prodottoList", prodottoList);
 
             model.addAttribute("assortimento", newAssortimento);
             return "assortimenti/create";
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                    "prodotto with id " + prodottoId + " not found");
-        }
-    }
 
+    }
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("assortimento") Assortimento formAssortimento, BindingResult bindingResult, Model model) {
+    public String store(@Valid @ModelAttribute("assortimento") Assortimento assortimento, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("prodotto", formAssortimento.getProdotto());
+            List<Prodotto>prodottoList=prodottoRepository.findAll();
+            model.addAttribute("prodottoList", prodottoList);
+
             return "assortimenti/create";
         }
-        if (formAssortimento.getQuantitàAcquistata()>formAssortimento.getProdotto().getQuantità()){
-            return "assortimenti/create";
-        }
-        formAssortimento.setDataAssortimento(LocalDate.now());
-        formAssortimento.setPrezzoSingolo(formAssortimento.getProdotto().getPrezzo());
-        formAssortimento.getProdotto().setQuantità(formAssortimento.getProdotto().getQuantità() + formAssortimento.getQuantitàAcquistata());
-        BigDecimal newQuantità = BigDecimal.valueOf(formAssortimento.getQuantitàAcquistata());
-        formAssortimento.setPrezzoTotale(formAssortimento.getPrezzoSingolo().multiply(newQuantità));
-        Assortimento assortimentoToSave = assortimentoRepository.save(formAssortimento);
+        assortimento.setNome(assortimento.getProdotto().getNome());
+
+        assortimento.setDataAssortimento(LocalDate.now());
+        assortimento.setPrezzoSingolo(assortimento.getProdotto().getPrezzo());
+        assortimento.getProdotto().setQuantità(assortimento.getProdotto().getQuantità() + assortimento.getQuantitàAcquistata());
+        BigDecimal newQuantità = BigDecimal.valueOf(assortimento.getQuantitàAcquistata());
+        assortimento.setPrezzoTotale(assortimento.getPrezzoSingolo().multiply(newQuantità));
+        Assortimento assortimentoToSave = assortimentoRepository.save(assortimento);
         return "redirect:/assortimenti";
     }
 }
