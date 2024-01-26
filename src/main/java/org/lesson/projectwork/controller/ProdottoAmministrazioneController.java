@@ -2,8 +2,10 @@ package org.lesson.projectwork.controller;
 
 import jakarta.validation.Valid;
 import org.lesson.projectwork.model.Acquisto;
+import org.lesson.projectwork.model.Assortimento;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AcquistoRepository;
+import org.lesson.projectwork.repository.AssortimentoRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,8 @@ public class ProdottoAmministrazioneController {
     private ProdottoRepository prodottoRepository;
     @Autowired
     private AcquistoRepository acquistoRepository;
+    @Autowired
+    private AssortimentoRepository assortimentoRepository;
 
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
@@ -107,5 +111,14 @@ public class ProdottoAmministrazioneController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found!");
         }
+    }
+    @GetMapping("/transazioni")
+    public String index( Model model) {
+        List<Acquisto> acquistoList;
+
+        acquistoList = acquistoRepository.findAll();
+
+        model.addAttribute("acquistoList", acquistoList);
+        return "amministrazione/listaAcquisti";
     }
 }
