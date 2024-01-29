@@ -23,8 +23,9 @@ public class AssortimentoController {
 
     @Autowired
     private ProdottoRepository prodottoRepository;
+
     @GetMapping
-    public String index( Model model) {
+    public String index(Model model) {
         List<Assortimento> assortimentoList;
 
         assortimentoList = assortimentoRepository.findAll();
@@ -34,20 +35,21 @@ public class AssortimentoController {
     }
 
     @GetMapping("/create")
-    public String create( Model model) {
-        List<Prodotto>prodottoList=prodottoRepository.findAll();
+    public String create(Model model) {
+        List<Prodotto> prodottoList = prodottoRepository.findAll();
 
-            Assortimento newAssortimento = new Assortimento();
-            model.addAttribute("prodottoList", prodottoList);
+        Assortimento newAssortimento = new Assortimento();
+        model.addAttribute("prodottoList", prodottoList);
 
-            model.addAttribute("assortimento", newAssortimento);
-            return "assortimenti/create";
+        model.addAttribute("assortimento", newAssortimento);
+        return "assortimenti/create";
 
     }
+
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("assortimento") Assortimento assortimento, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            List<Prodotto>prodottoList=prodottoRepository.findAll();
+            List<Prodotto> prodottoList = prodottoRepository.findAll();
             model.addAttribute("prodottoList", prodottoList);
 
             return "assortimenti/create";
@@ -55,7 +57,6 @@ public class AssortimentoController {
         assortimento.setNome(assortimento.getProdotto().getNome());
 
         assortimento.setDataAssortimento(LocalDate.now());
-        assortimento.setPrezzoSingolo(assortimento.getProdotto().getPrezzo());
         assortimento.getProdotto().setQuantita(assortimento.getProdotto().getQuantita() + assortimento.getQuantitaAcquistata());
         BigDecimal newQuantità = BigDecimal.valueOf(assortimento.getQuantitaAcquistata());
         assortimento.setPrezzoTotale(assortimento.getPrezzoSingolo().multiply(newQuantità));
