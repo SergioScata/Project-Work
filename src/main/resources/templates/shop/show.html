@@ -27,10 +27,10 @@
                 </div>
 
                 <div class="mt-5 text-center">
-                    <a th:if="${prodotto.quantita != 0}"
+                    <a
                        th:href="@{/shop/create(prodottoId=${prodotto.id})}"
                        class="btn btn-outline-warning text-color-custom me-2">Acquista</a>
-                    <a th:unless="${prodotto.quantita != 0}" class="btn btn-outline text-color-custom">Acquista</a>
+
                 </div>
             </div>
 
