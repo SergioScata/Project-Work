@@ -5,7 +5,7 @@
 <body class="">
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
-<main style="min-height: 727px;">
+<main style="min-height: 727px; font-size: 1.5em;">
     <div class="container">
         <div class="row mt-3">
             <div class="col-8 mt-4">
@@ -14,24 +14,31 @@
 
             <div class="col-4  mt-4 pt-5 centro">
                 <div>
-                    <h1 class="text-center pb-3 mt-1" th:text="${prodotto.nome}"></h1>
+                    <h1 class="pb-3 mt-1 text-center" th:text="${prodotto.nome}" style="font-size: 2.5em"></h1>
                 </div>
                 <h5 class=" text-center pb-2 mt-1"><i class="fa-solid fa-landmark"></i></h5>
                 <h6 class=" text-center pb-3" th:text="${prodotto.descrizione}"></h6>
 
 
-                <div class="row text-center justify-content-around">
+                <div class="row text-center justify-content-around mt-5">
                     <div class="col-5 text-center" th:text="|Prezzo: ${prodotto.prezzo} €|"></div>
                     <div class="col-5 text-center" th:text="|${prodotto.quantita} disponibili|"></div>
 
+                </div>
+
+                <div class="mt-5 text-center">
+                    <a th:if="${prodotto.quantità != 0}"
+                       th:href="@{/shop/create(prodottoId=${prodotto.id})}"
+                       class="btn btn-outline-warning text-color-custom me-2">Acquista</a>
+                    <a th:unless="${prodotto.quantità != 0}" class="btn btn-outline text-color-custom">Acquista</a>
                 </div>
             </div>
 
         </div>
 
 
-        <div class="text-center mt-5">
-            <a class="text-decoration-none text-dark" th:href="@{/shop}"><i
+        <div class="text-center mt-5" style="font-size: 0.8em">
+            <a class="text-decoration-none gold-text" th:href="@{/shop}"><i
                     class="fa-solid fa-circle-chevron-left"></i> Ritorna alla lista </a>
         </div>
     </div>
