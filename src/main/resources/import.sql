@@ -10,7 +10,7 @@ INSERT INTO prodotto(prezzo, quantita, descrizione, foto, nome) VALUES (60, 15, 
 INSERT INTO prodotto(prezzo, quantita, descrizione, foto, nome) VALUES (180, 8, 'Una tela d\'arte moderna dipinta a mano da un artista contemporaneo, con uno stile unico e audace.', '/tela-moderna.png', 'Tela d\'Arte Moderna');
 INSERT INTO `role` (name) VALUES('ADMIN');
 INSERT INTO `role` (name) VALUES('USER');
-INSERT INTO museum_user (email, first_name, last_name, password) VALUES('jane@email.com', 'Jane', 'Doe', '{noop}jane');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('admin', 'Jane', 'Doe', '{noop}admin');
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('john@email.com', 'John', 'Doe', '{noop}john');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'USER');
