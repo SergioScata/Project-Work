@@ -15,20 +15,14 @@ public class Assortimento {
     private Integer quantitaAcquistata;
     private String nomeFornitore;
     private BigDecimal prezzoSingolo;
-    private BigDecimal prezzoTotale;
+
     private String nome;
 
 
 
     @ManyToOne
     private Prodotto prodotto;
-    public BigDecimal getPrezzoTotale() {
-        return prezzoTotale;
-    }
 
-    public void setPrezzoTotale(BigDecimal prezzoTotale) {
-        this.prezzoTotale = prezzoTotale;
-    }
 
     public Integer getId() {
         return id;
@@ -85,5 +79,10 @@ public class Assortimento {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public  BigDecimal getPrezzoTotale(){
+        BigDecimal prezzoTotale= prezzoSingolo.multiply(new BigDecimal(quantitaAcquistata));
+
+        return prezzoTotale;
     }
 }

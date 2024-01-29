@@ -99,3 +99,4 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.body.style.marginRight= "0";
 }
+

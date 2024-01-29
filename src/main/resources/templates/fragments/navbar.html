@@ -1,5 +1,6 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
 
 <body>
 <header th:fragment="navbar(area)" class="container-fluid g-0 sticky-top">
@@ -42,17 +43,23 @@
 
             <div id="mySidebar" class="sidebar">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                <a class="mt-4" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
-                <a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrello</a>
+                <a class="mt-4 login-link" th:href="@{/login}">
+                    <span sec:authorize="!isAuthenticated()">Login</span>
+                </a>
+                <sec:authorize access="isAuthenticated()">
+                    <span sec:authorize="hasAuthority('USER')">Benvenuto, <span th:text="${#authentication.name}"></span></span>
+                    <a class="mt-4" href="/logout" sec:authorize="hasAuthority('USER')">Logout</a>
+                    <a href="#" sec:authorize="hasAuthority('USER')">Carrello</a>
+                </sec:authorize>
             </div>
-
             <div>
                 <button class="openbtn bg-transparent me-5 pe-2" onclick="openNav()"><i
                         class="fa-solid fa-user"></i></button>
             </div>
         </div>
     </nav>
+
+
 </header>
 </body>
 </html>

@@ -31,18 +31,8 @@
                    style="font-family: Arial, Helvetica, sans-serif;" type="number" id="quantita"
                    th:field="*{quantita}"
                    th:errorClass="is-invalid">
-
-            <h5 class="mt-3">Disponibilità</h5>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantita')}">
-                <ul>
-                    <li th:each="err : ${#fields.errors('quantita')}" th:text="${err}"></li>
-
-                </ul>
-            </div>
-            <h5
-                    th:text="${acquisto.prodotto.quantita}"></h5>
-            <h5 th:if="${errorMessage}" th:text="${errorMessage}"></h5>
         </div>
+
 
         <input type="hidden" th:field="*{dataAcquisto}">
 

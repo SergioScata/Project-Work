@@ -76,7 +76,7 @@
                             </td>
                             <td>
                                 <i class="fa-solid fa-circle"
-                                   th:classappend="${prodotto.quantita == 0 ? 'text-danger' : prodotto.quantita < 51 ? 'text-warning' : 'text-success'}"></i>
+                                   th:classappend="${prodotto.quantita <= 0 ? 'text-danger' : prodotto.quantita < 51 ? 'text-warning' : 'text-success'}"></i>
                             </td>
                         </div>
                     </tr>
