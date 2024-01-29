@@ -14,12 +14,12 @@
           th:object="${assortimento}"
           method="post">
         <div class="col-6">
-            <label class="form-label" for="quantitàAcquistata"><h6>quantità Acquistata</h6></label>
-            <input class="form-control" type="text" id="quantitàAcquistata" th:field="*{quantitàAcquistata}"
+            <label class="form-label" for="quantitaAcquistata"><h6>quantità Acquistata</h6></label>
+            <input class="form-control" type="text" id="quantitaAcquistata" th:field="*{quantitaAcquistata}"
                    th:errorClass="is-invalid">
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantitàAcquistata')}">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantitaAcquistata')}">
                 <ul>
-                    <li th:each="err : ${#fields.errors('quantitàAcquistata')}" th:text="${err}"></li>
+                    <li th:each="err : ${#fields.errors('quantitaAcquistata')}" th:text="${err}"></li>
                 </ul>
             </div>
         </div>

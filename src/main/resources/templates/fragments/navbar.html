@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <body>
 <header th:fragment="navbar(area)" class="container-fluid g-0 sticky-top">
@@ -19,12 +19,13 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:classappend="${area == 'shop' ? 'active' : ''}"
-                           th:href="@{/shop}">Shop</a>
+                           th:href="@{/shop}"sec:authorize="hasAuthority('USER')">Shop</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle "
                            th:classappend="${area == 'amministrazione' ? 'active' : ''}"
-                           th:href="@{/amministrazione}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Amministrazione</a>
+                           th:href="@{/amministrazione}" sec:authorize="hasAuthority('ADMIN')"  role="button" data-bs-toggle="dropdown" aria-expanded="false">Amministrazione
+                           </a>
 
                         <ul class="dropdown-menu bg-black bg-opacity-25 border-0 rounded">
                             <li><a class="dropdown-item text-white" th:href="@{/amministrazione}">Prodotti</a></li>
