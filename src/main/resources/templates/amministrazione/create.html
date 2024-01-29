@@ -6,7 +6,7 @@
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
 <main class="container mt-4 " style="min-height: 720px; font-size: 1.5em;">
-    <h1 class="gold-text" th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
+    <h1 class="gold-text title" th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
 
     <form id="ingredients-create" class="row"
           th:with="url=${prodotto.id == null ? '/amministrazione/create' : '/amministrazione/edit/' + prodotto.id}"

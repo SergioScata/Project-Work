@@ -74,6 +74,19 @@ body{
     font-family: 'Cormorant Garamond', serif;
 }
 
+.title {
+        position: relative;
+      }
+      .title:before {
+        content: "";
+        display: block;
+        width: 210px;
+        height: 2px;
+        background: #E3AA54;
+        left: -230px;
+        top: 43%;
+        position: absolute;
+      }
 
 
 
