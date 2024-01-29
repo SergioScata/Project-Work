@@ -18,6 +18,7 @@ public class Prodotto {
     private String foto;
     @NotEmpty
     private String nome;
+    @Lob
     private String descrizione;
     @NotNull
     @Min(0)
@@ -93,6 +94,7 @@ public class Prodotto {
     public void setQuantita(Integer quantita) {
         this.quantita = quantita;
     }
+
     @PreRemove
     public void preRemove() {
         if (acquisto != null) {
@@ -102,8 +104,6 @@ public class Prodotto {
             assortimento.forEach(a -> a.setProdotto(null));
         }
     }
-
-
 
 
 }
