@@ -23,7 +23,7 @@ public class Prodotto {
     @NotNull
     @Min(0)
     private BigDecimal prezzo;
-    private Integer quantita = 0;
+
 
     @OneToMany(mappedBy = "prodotto")
     private List<Acquisto> acquisto;
@@ -87,12 +87,24 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public Integer getQuantita() {
-        return quantita;
-    }
 
-    public void setQuantita(Integer quantita) {
-        this.quantita = quantita;
+    public int getQuantita() {
+        int quantitaAssortimenti = 0;
+        int quantitaAcquisti = 0;
+
+        if (assortimento != null) {
+            for (Assortimento a : assortimento) {
+                quantitaAssortimenti += a.getQuantitaAcquistata();
+            }
+        }
+
+        if (acquisto != null) {
+            for (Acquisto a : acquisto) {
+                quantitaAcquisti += a.getQuantita();
+            }
+        }
+
+        return quantitaAssortimenti - quantitaAcquisti;
     }
 
     @PreRemove
@@ -104,6 +116,8 @@ public class Prodotto {
             assortimento.forEach(a -> a.setProdotto(null));
         }
     }
+
+
 
 
 }

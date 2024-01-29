@@ -6,7 +6,7 @@
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
 <h1>Login</h1>
-<form th:action="@{/perform_login}" method="post">
+<form th:action="@{/login}" method="post">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required />
     <br/>

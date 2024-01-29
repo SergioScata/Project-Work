@@ -37,8 +37,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/amministrazione/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/assortimenti/**").hasAuthority("ADMIN")
                 .and().formLogin()
-                .loginPage("/") // set the login page to the root URL
-                .loginProcessingUrl("/perform_login")
+                .loginPage("/login") // set the login page to the root URL
+               // .loginProcessingUrl("/perform_login")
                 .defaultSuccessUrl("/",true)
                 .and().logout()
                 .and().exceptionHandling()

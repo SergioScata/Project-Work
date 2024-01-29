@@ -31,10 +31,17 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "home/login"; // Assuming that your login page view is named "login.html"
+        if (SecurityContextHolder.getContext().getAuthentication() != null
+                && SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
+                && !SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return "redirect:/";
+        }
+
+        return "home/login";
     }
 
-    @PostMapping("/perform_login")
+
+    /*@PostMapping("/perform_login")
     public String performLogin(@RequestParam("username") String email,
                                @RequestParam("password") String password,
                                Model model) {
@@ -50,7 +57,7 @@ public class LoginController {
             model.addAttribute("error", "Invalid username or password");
             return "login";
         }
-    }
+    }*/
 
 
     }

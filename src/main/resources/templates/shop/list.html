@@ -59,13 +59,13 @@
 
                         <div class=" d-flex justify-content-between pt-3">
                             <div class="text-light">
-                                <p th:text="${prodotto.quantita == 0 ? 'Queso prodotto è esaurito' : prodotto.quantita < 51 ? 'Affrettati, solo pochi disponibili !' : ' '}"> </p>
+
                             </div>
                             <div class="text-light">
-                                <a th:if="${prodotto.quantita != 0}"
+                                <a
                                    th:href="@{/shop/create(prodottoId=${prodotto.id})}"
                                    class="btn btn-outline-warning text-color-custom me-2">Acquista</a>
-                                <a th:unless="${prodotto.quantita != 0}" class="btn btn-outline text-color-custom">Acquista</a>
+
                             </div>
                         </div>
 

@@ -20,6 +20,7 @@ public class DatabaseUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<MuseumUser> museumUser=museumUserRepository.findByEmail(username);
         if (museumUser.isPresent()){
+            MuseumUser user=museumUser.get();
             return  new DatabaseUserDetails(museumUser.get());
         }
         else {

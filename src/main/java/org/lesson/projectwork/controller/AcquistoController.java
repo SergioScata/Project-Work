@@ -63,21 +63,15 @@ public class AcquistoController {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
             return "shop/create";
         }
-        if (formAcquisto.getQuantita() > formAcquisto.getProdotto().getQuantita()) {
-            model.addAttribute("prodotto", formAcquisto.getProdotto());
-            model.addAttribute("errorMessage", "There is not enough quantity in stock.");
 
-            return "shop/create";
-        }
         formAcquisto.setDataAcquisto(LocalDate.now());
         formAcquisto.setPrezzoSingolo(formAcquisto.getProdotto().getPrezzo());
         Random random = new Random();
         int codiceRandom = (random.nextInt(100000, 999999));
         formAcquisto.setCodice(Integer.valueOf(codiceRandom));
         formAcquisto.setNome((formAcquisto.getProdotto().getNome()));
-        formAcquisto.getProdotto().setQuantita(formAcquisto.getProdotto().getQuantita() - formAcquisto.getQuantita());
-        BigDecimal newQuantità = BigDecimal.valueOf(formAcquisto.getQuantita());
-        formAcquisto.setPrezzoTotale(formAcquisto.getPrezzoSingolo().multiply(newQuantità));
+
+        BigDecimal newQuantita = BigDecimal.valueOf(formAcquisto.getQuantita());
         Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
 
 

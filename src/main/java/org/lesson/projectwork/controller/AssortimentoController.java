@@ -57,9 +57,9 @@ public class AssortimentoController {
         assortimento.setNome(assortimento.getProdotto().getNome());
 
         assortimento.setDataAssortimento(LocalDate.now());
-        assortimento.getProdotto().setQuantita(assortimento.getProdotto().getQuantita() + assortimento.getQuantitaAcquistata());
+
         BigDecimal newQuantità = BigDecimal.valueOf(assortimento.getQuantitaAcquistata());
-        assortimento.setPrezzoTotale(assortimento.getPrezzoSingolo().multiply(newQuantità));
+
         Assortimento assortimentoToSave = assortimentoRepository.save(assortimento);
         return "redirect:/assortimenti";
     }

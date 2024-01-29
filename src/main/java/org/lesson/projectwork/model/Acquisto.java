@@ -22,7 +22,7 @@ public class Acquisto{
 
    private Integer codice;
 
-   private BigDecimal prezzoTotale;
+
    private String nome;
 
     public String getNome() {
@@ -83,11 +83,9 @@ public class Acquisto{
         this.codice = codice;
     }
 
-    public BigDecimal getPrezzoTotale() {
-        return prezzoTotale;
-    }
+public  BigDecimal getPrezzoTotale(){
+        BigDecimal prezzoTotale= prezzoSingolo.multiply(new BigDecimal(quantita));
 
-    public void setPrezzoTotale(BigDecimal prezzoTotale) {
-        this.prezzoTotale = prezzoTotale;
-    }
+    return prezzoTotale;
+}
 }
