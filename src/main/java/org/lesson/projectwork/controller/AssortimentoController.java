@@ -1,23 +1,19 @@
 package org.lesson.projectwork.controller;
 
 import jakarta.validation.Valid;
-import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Assortimento;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AssortimentoRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/assortimenti")
@@ -60,8 +56,8 @@ public class AssortimentoController {
 
         assortimento.setDataAssortimento(LocalDate.now());
         assortimento.setPrezzoSingolo(assortimento.getProdotto().getPrezzo());
-        assortimento.getProdotto().setQuantità(assortimento.getProdotto().getQuantità() + assortimento.getQuantitàAcquistata());
-        BigDecimal newQuantità = BigDecimal.valueOf(assortimento.getQuantitàAcquistata());
+        assortimento.getProdotto().setQuantita(assortimento.getProdotto().getQuantita() + assortimento.getQuantitaAcquistata());
+        BigDecimal newQuantità = BigDecimal.valueOf(assortimento.getQuantitaAcquistata());
         assortimento.setPrezzoTotale(assortimento.getPrezzoSingolo().multiply(newQuantità));
         Assortimento assortimentoToSave = assortimentoRepository.save(assortimento);
         return "redirect:/assortimenti";

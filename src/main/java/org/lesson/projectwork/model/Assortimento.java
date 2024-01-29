@@ -12,7 +12,7 @@ public class Assortimento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate dataAssortimento;
-    private Integer quantitàAcquistata;
+    private Integer quantitaAcquistata;
     private String nomeFornitore;
     private BigDecimal prezzoSingolo;
     private BigDecimal prezzoTotale;
@@ -47,12 +47,12 @@ public class Assortimento {
     }
 
 
-    public Integer getQuantitàAcquistata() {
-        return quantitàAcquistata;
+    public Integer getQuantitaAcquistata() {
+        return quantitaAcquistata;
     }
 
-    public void setQuantitàAcquistata(Integer quantitàAcquistata) {
-        this.quantitàAcquistata = quantitàAcquistata;
+    public void setQuantitaAcquistata(Integer quantitaAcquistata) {
+        this.quantitaAcquistata = quantitaAcquistata;
     }
 
     public String getNomeFornitore() {

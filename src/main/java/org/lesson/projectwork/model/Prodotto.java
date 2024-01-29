@@ -22,7 +22,8 @@ public class Prodotto {
     @NotNull
     @Min(0)
     private BigDecimal prezzo;
-    private Integer quantità = 0;
+    private Integer quantita = 0;
+
     @OneToMany(mappedBy = "prodotto")
     private List<Acquisto> acquisto;
 
@@ -85,12 +86,12 @@ public class Prodotto {
         this.prezzo = prezzo;
     }
 
-    public Integer getQuantità() {
-        return quantità;
+    public Integer getQuantita() {
+        return quantita;
     }
 
-    public void setQuantità(Integer quantità) {
-        this.quantità = quantità;
+    public void setQuantita(Integer quantita) {
+        this.quantita = quantita;
     }
     @PreRemove
     public void preRemove() {

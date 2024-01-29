@@ -26,20 +26,20 @@
 
 
         <div class="col-7">
-            <label class="form-label logocolor mb-3" for="quantità"><h6>Seleziona quantità</h6></label>
-            <input class="form-control border-bottom-0 border-start-0 w-25" type="number" id="quantità"
-                   th:field="*{quantità}"
+            <label class="form-label logocolor mb-3" for="quantita"><h6>Seleziona quantità</h6></label>
+            <input class="form-control border-bottom-0 border-start-0 w-25" type="number" id="quantita"
+                   th:field="*{quantita}"
                    th:errorClass="is-invalid">
 
             <h6 class="mt-3">Disponibilità</h6>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantita')}">
                 <ul>
-                    <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+                    <li th:each="err : ${#fields.errors('quantita')}" th:text="${err}"></li>
 
                 </ul>
             </div>
             <h5
-                    th:text="${acquisto.prodotto.quantità}"></h5>
+                    th:text="${acquisto.prodotto.quantita}"></h5>
             <h5 th:if="${errorMessage}" th:text="${errorMessage}"></h5>
         </div>
 

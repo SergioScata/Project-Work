@@ -14,7 +14,7 @@ public class Acquisto{
     private Integer id;
     private LocalDate dataAcquisto;
    @NotNull
-   private Integer quantità;
+   private Integer quantita;
    @ManyToOne
    private Prodotto prodotto;
 
@@ -50,12 +50,12 @@ public class Acquisto{
         this.dataAcquisto = dataAcquisto;
     }
 
-    public Integer getQuantità() {
-        return quantità;
+    public Integer getQuantita() {
+        return quantita;
     }
 
-    public void setQuantità(Integer quantità) {
-        this.quantità = quantità;
+    public void setQuantita(Integer quantita) {
+        this.quantita = quantita;
     }
 
     public Prodotto getProdotto() {

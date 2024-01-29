@@ -70,11 +70,11 @@
                                 <div class="badge text-light"><h6 th:text="${prodotto.prezzo} + ' ' + € "></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-light"><h6 th:text="${prodotto.quantità}"></h6></div>
+                                <div class="badge text-light"><h6 th:text="${prodotto.quantita}"></h6></div>
                             </td>
                             <td>
                                 <i class="fa-solid fa-circle"
-                                   th:classappend="${prodotto.quantità == 0 ? 'text-danger' : prodotto.quantità < 51 ? 'text-warning' : 'text-success'}"></i>
+                                   th:classappend="${prodotto.quantita == 0 ? 'text-danger' : prodotto.quantita < 51 ? 'text-warning' : 'text-success'}"></i>
                             </td>
                         </div>
                     </tr>

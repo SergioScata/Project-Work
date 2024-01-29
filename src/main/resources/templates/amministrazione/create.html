@@ -38,12 +38,12 @@
         </div>
 
         <div class="mt-3 col-4">
-            <label class="form-label" for="quantità"><h6>Quantità</h6></label>
-            <input class="form-control" type="number" id="quantità" th:field="*{quantità}"
+            <label class="form-label" for="quantita"><h6>Quantità</h6></label>
+            <input class="form-control" type="number" id="quantita" th:field="*{quantita}"
                    th:errorClass="is-invalid">
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantità')}">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantita')}">
                 <ul>
-                    <li th:each="err : ${#fields.errors('quantità')}" th:text="${err}"></li>
+                    <li th:each="err : ${#fields.errors('quantita')}" th:text="${err}"></li>
                 </ul>
             </div>
         </div>
