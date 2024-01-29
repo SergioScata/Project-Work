@@ -25,7 +25,7 @@
     <div>
 
         <div class="mt-4 mb-4 row">
-            <div class="col-8 gold-text">
+            <div class="col-8 gold-text title">
                 <h1>Rifornimenti</h1>
             </div>
 
@@ -53,9 +53,8 @@
                         <th scope="col">prodotto Acquistato</th>
                         <th scope="col">Quantità Acquistato</th>
                         <th scope="col">Nome fornitore</th>
-                        <th scope="col">prezzo 1 unità</th>
+                        <th scope="col">prezzo per unità</th>
                         <th scope="col">prezzo totale</th>
-                        <th scope="col"></th>
                     </tr>
                     </thead>
 
@@ -87,6 +86,12 @@
                     </tbody>
                 </table>
 
+            </div>
+            <div class="col-lg-3" style="position: sticky; top: 85px;">
+                <div class="mt-3">
+                    <a class="btn btn-outline text-color-custom" th:href="@{/assortimenti/create}"><i
+                            class="fa-solid fa-plus"></i></a>
+                </div>
             </div>
         </div>
 
