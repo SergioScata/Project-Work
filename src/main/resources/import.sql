@@ -11,7 +11,7 @@ INSERT INTO prodotto(prezzo, quantita, descrizione, foto, nome) VALUES (180, 8, 
 INSERT INTO `role` (name) VALUES('ADMIN');
 INSERT INTO `role` (name) VALUES('USER');
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('admin', 'Jane', 'Doe', '{noop}admin');
-INSERT INTO museum_user (email, first_name, last_name, password) VALUES('john@email.com', 'John', 'Doe', '{noop}john');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user', 'John', 'Doe', '{noop}user');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');

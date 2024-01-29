@@ -86,3 +86,16 @@ chatInput.addEventListener("keydown", (e) => {
 sendChatBtn.addEventListener("click", handleChat);
 closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+
+
+//sidebar script
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.body.style.marginRight = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.body.style.marginRight= "0";
+}

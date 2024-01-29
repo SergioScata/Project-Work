@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
-<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
-<body class="">
+<body class="" id="main">
+<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
 <main class="container">
     <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
