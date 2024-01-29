@@ -15,3 +15,4 @@ INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user', 
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');
+

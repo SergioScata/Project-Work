@@ -9,15 +9,16 @@
 
     <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
          class="bg-body-secondary  bd-example-toasts rounded-3">
-        <div class="toast-container p-3 top-20 start-50 translate-middle-x" id="toastPlacement"
+        <div class="toast-container p-3 start-50 translate-middle-x" style="top: 100px;"
+             id="toastPlacement"
              data-original-class="toast-container p-3">
             <div class="toast fade show">
                 <div class="toast-header">
                     <i class="fa-solid fa-building-columns"></i>
-                    <strong class="me-auto">Museo alert</strong>
+                    <strong class="me-auto ">Museo alert</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <div class="toast-body" th:text="${redirectMessage}"></div>
+                <div class="toast-body text-dark " th:text="${redirectMessage}"></div>
             </div>
         </div>
     </div>
@@ -29,7 +30,8 @@
                 <h1 class="font">Catalogo Prodotti</h1>
             </div>
 
-            <form class="col-3" id="prodotto-search" th:action="@{/amministrazione}" method="get">
+            <form class="col-3" id="prodotto-search" th:action="@{/amministrazione}" method="get"
+                  style="font-family: Arial, Helvetica, sans-serif;">
                 <div class="input-group">
                     <input class="form-control" type="text" name="keyword" id="keyword"
                            placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
@@ -65,12 +67,12 @@
                             </a></td>
                             <td class="fw-normal name-list-w"><a class="text-black text-decoration-none"
                                                                  th:href="@{/amministrazione/show/{id}(id=${prodotto.id})}">
-                                <h5 class="text-light" th:text="${prodotto.nome}"></h5></a></td>
+                                <h4 class="text-light" th:text="${prodotto.nome}"></h4></a></td>
                             <td>
-                                <div class="badge text-light"><h6 th:text="${prodotto.prezzo} + ' ' + € "></h6></div>
+                                <div class="badge text-light"><h5 th:text="${prodotto.prezzo} + ' ' + € "></h5></div>
                             </td>
                             <td>
-                                <div class="badge text-light"><h6 th:text="${prodotto.quantita}"></h6></div>
+                                <div class="badge text-light"><h5 th:text="${prodotto.quantita}"></h5></div>
                             </td>
                             <td>
                                 <i class="fa-solid fa-circle"
@@ -92,7 +94,7 @@
                             <button class="accordion-button p-2 collapsed text-center" type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                <h5 class="text-center pt-1 ps-2">Gestione prodotti</h5>
+                                <h5 class="text-center pt-1 ps-2"><b>Gestione prodotti</b></h5>
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample"

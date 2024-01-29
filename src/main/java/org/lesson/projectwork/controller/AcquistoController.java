@@ -39,6 +39,7 @@ public class AcquistoController {
         model.addAttribute("preloadSearch", searchKeyword);
         return "shop/list";
     }
+
     @GetMapping("/create")
     public String create(@RequestParam(name = "prodottoId", required = true) Integer prodottoId, Model model) {
         Optional<Prodotto> result = prodottoRepository.findById(prodottoId);
@@ -65,7 +66,7 @@ public class AcquistoController {
         }
         if (formAcquisto.getQuantita() > formAcquisto.getProdotto().getQuantita()) {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
-            model.addAttribute("errorMessage", "There is not enough quantity in stock.");
+            model.addAttribute("errorMessage", "Ci dispiace non abbiamo abbastanza prodotti di questa tipologia in magazzino. \n Selezioni una quantità compresa nella disponibilità indicata.");
 
             return "shop/create";
         }

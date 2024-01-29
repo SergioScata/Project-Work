@@ -37,8 +37,8 @@ transform: scale(112%)  !important;
             transform: scale(112%) !important;
 }
 
-body {
-    background-color: #222222;
+main {
+    /*background-color: #222222;*/
     color: white;
 }
 
@@ -72,6 +72,9 @@ color: #E3AA54;
 
 body{
     font-family: 'Cormorant Garamond', serif;
+    background-image: url('https://img.tile.expert/img_lb/ricchetti/golden-pure/per_sito/minimali/b_ricchetti_golden_pure_592277_saintlaurentl.webp?64');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .title {
