@@ -25,19 +25,21 @@ public class SecurityConfiguration {
         return authenticationProvider;
     }
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-       http.authorizeHttpRequests()
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
                 .requestMatchers("/amministrazione/edit/**", "/amministrazione/delete/**")
                 .hasAuthority("ADMIN")
                 .requestMatchers("/shop", "/shop/show/**", "/shop/create/**").hasAnyAuthority("ADMIN", "USER")
-               .requestMatchers("/amministrazione").hasAnyAuthority("ADMIN")
-                .requestMatchers("/amministrazione/show/**").hasAuthority("Admin")
-                .requestMatchers("/","/**").permitAll()
-               .requestMatchers(HttpMethod.POST, "/shop/**").hasAuthority("ADMIN")
-               .requestMatchers(HttpMethod.POST, "/amministrazione/**").hasAuthority("ADMIN")
-               .requestMatchers(HttpMethod.POST, "/assortimenti/**").hasAuthority("ADMIN")
+                .requestMatchers("/amministrazione").hasAnyAuthority("ADMIN")
+                .requestMatchers("/amministrazione/show/**").hasAuthority("ADMIN")
+                .requestMatchers("/", "/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/shop/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/amministrazione/**").hasAuthority("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/assortimenti/**").hasAuthority("ADMIN")
                 .and().formLogin()
-                .and().formLogin()
+                .loginPage("/") // set the login page to the root URL
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/",true)
                 .and().logout()
                 .and().exceptionHandling()
                 .and().csrf().disable();

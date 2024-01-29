@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>login</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Show')"></head>
 
+<body class="">
+<header th:replace="fragments/navbar.html :: navbar('shop')"></header>
+
+<h1>Login</h1>
+<form th:action="@{/perform_login}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required />
+    <br/>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+    <br/>
+    <button type="submit">Login</button>
+</form>
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>
 </body>
 </html>
