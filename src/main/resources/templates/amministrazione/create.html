@@ -5,8 +5,8 @@
 <body>
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
-<main class="container mt-4" style="min-height: 720px;">
-    <h1 th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
+<main class="container mt-4 " style="min-height: 720px; font-size: 1.5em;">
+    <h1 class="gold-text" th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
 
     <form id="ingredients-create" class="row"
           th:with="url=${prodotto.id == null ? '/amministrazione/create' : '/amministrazione/edit/' + prodotto.id}"
@@ -72,8 +72,8 @@
 
 
         <div class="col-12 mt-4 mb-4">
-            <button type="submit" class="btn btn-dark me-2">Save</button>
-            <a class="btn btn-dark" th:href="@{/amministrazione}">Cancel</a>
+            <button type="submit" class="btn btn-outline text-color-custom me-2">Save</button>
+            <a class="btn btn-outline text-color-custom" th:href="@{/amministrazione}">Cancel</a>
         </div>
     </form>
 </main>
