@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -102,7 +103,7 @@ public class ProdottoAmministrazioneController {
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Optional<Prodotto> result = prodottoRepository.findById(id);
-        Prodotto prodottoToDelete= result.get();
+        Prodotto prodottoToDelete = result.get();
         if (result.isPresent()) {
             prodottoRepository.deleteById(id);
 
@@ -112,13 +113,38 @@ public class ProdottoAmministrazioneController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id" + id + "not found!");
         }
     }
+
     @GetMapping("/transazioni")
-    public String index( Model model) {
+    public String index(Model model) {
         List<Acquisto> acquistoList;
 
         acquistoList = acquistoRepository.findAll();
 
         model.addAttribute("acquistoList", acquistoList);
         return "amministrazione/listaAcquisti";
+    }
+
+    @GetMapping("/contabilita")
+    public String contabilita(Model model) {
+        List<Acquisto> acquisti = acquistoRepository.findAll();
+        List<Assortimento> assortimenti = assortimentoRepository.findAll();
+        List<Object> entries = new ArrayList<>();
+        for (Acquisto acquisto : acquisti) {
+            entries.add(acquisto);
+        }
+        for (Assortimento assortimento : assortimenti) {
+            entries.add(assortimento);
+        }
+        entries.sort((e1, e2) -> {
+            if (e1 instanceof Acquisto && e2 instanceof Acquisto) {
+                return ((Acquisto) e2).getDataAcquisto().compareTo(((Acquisto) e1).getDataAcquisto());
+            } else if (e1 instanceof Assortimento && e2 instanceof Assortimento) {
+                return ((Assortimento) e2).getDataAssortimento().compareTo(((Assortimento) e1).getDataAssortimento());
+            } else {
+                return 0;
+            }
+        });
+        model.addAttribute("entrate", entries);
+        return "amministrazione/contabilita";
     }
 }

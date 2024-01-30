@@ -107,6 +107,7 @@ public class Prodotto {
         return quantitaAssortimenti - quantitaAcquisti;
     }
 
+
     @PreRemove
     public void preRemove() {
         if (acquisto != null) {
