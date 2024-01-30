@@ -40,14 +40,14 @@
                     </thead>
                     <tbody>
                     <tr th:each="entry : ${entrate}">
-                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.dataAcquisto} : ''"></td>
-                        <td th:text="${entry != null && entry instanceof acquisto} ? 'acquisto' : ''"></td>
-                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.quantita} : ''"></td>
-                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.prodotto.nome} : ''"></td>
-                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.dataAssortimento} : ''"></td>
-                        <td th:text="${entry != null && entry instanceof assortimento} ? 'assortimento' : ''"></td>
-                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.quantitaAcquistata} : ''"></td>
-                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.prodotto.nome} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.dataAcquisto} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? 'acquisto' : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.quantita} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.prodotto.nome} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.dataAssortimento} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? 'assortimento' : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.quantitaAcquistata} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.prodotto.nome} : ''"></td>
                     </tr>
                     </tbody>
                 </table>

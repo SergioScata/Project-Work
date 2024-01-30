@@ -2,11 +2,15 @@ package org.lesson.projectwork.controller;
 
 import jakarta.validation.Valid;
 import org.lesson.projectwork.model.Acquisto;
+import org.lesson.projectwork.model.MuseumUser;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AcquistoRepository;
+import org.lesson.projectwork.repository.MuseumUserRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
+import org.lesson.projectwork.security.DatabaseUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +30,8 @@ public class AcquistoController {
     private AcquistoRepository acquistoRepository;
     @Autowired
     private ProdottoRepository prodottoRepository;
+    @Autowired
+    private MuseumUserRepository museumUserRepository;
 
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
@@ -59,37 +65,32 @@ public class AcquistoController {
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("acquisto") Acquisto formAcquisto, BindingResult bindingResult, Model model) {
+    public String store(@Valid @ModelAttribute("acquisto") Acquisto formAcquisto, BindingResult bindingResult, Model model, Authentication authentication) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("prodotto", formAcquisto.getProdotto());
             return "shop/create";
         }
-
-        formAcquisto.setDataAcquisto(LocalDate.now());
-        formAcquisto.setPrezzoSingolo(formAcquisto.getProdotto().getPrezzo());
-        Random random = new Random();
-        int codiceRandom = (random.nextInt(100000, 999999));
-        formAcquisto.setCodice(Integer.valueOf(codiceRandom));
-        formAcquisto.setNome((formAcquisto.getProdotto().getNome()));
-
-        BigDecimal newQuantita = BigDecimal.valueOf(formAcquisto.getQuantita());
-        Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
+        DatabaseUserDetails loggedUser = (DatabaseUserDetails) authentication.getPrincipal();
 
 
-        return "redirect:/shop";
+
+            formAcquisto.setUser(museumUserRepository.findById(loggedUser.getId()).get());
+
+
+            formAcquisto.setDataAcquisto(LocalDate.now());
+            formAcquisto.setPrezzoSingolo(formAcquisto.getProdotto().getPrezzo());
+            Random random = new Random();
+            int codiceRandom = (random.nextInt(100000, 999999));
+            formAcquisto.setCodice(Integer.valueOf(codiceRandom));
+            formAcquisto.setNome((formAcquisto.getProdotto().getNome()));
+
+            // Calcola la nuova quantità e salva l'oggetto Acquisto
+            BigDecimal newQuantita = BigDecimal.valueOf(formAcquisto.getQuantita());
+            Acquisto acquistoToSave = acquistoRepository.save(formAcquisto);
+
+            return "redirect:/shop";
+
+
+
     }
-
-    @GetMapping("/show/{id}")
-    public String show(@PathVariable Integer id, Model model) {
-        Optional<Prodotto> result = prodottoRepository.findById(id);
-        if (result.isPresent()) {
-            Prodotto prodotto = result.get();
-            model.addAttribute("prodotto", prodotto);
-            return "shop/show";
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodotto with id " + id + " not found");
-        }
-    }
-
-
 }

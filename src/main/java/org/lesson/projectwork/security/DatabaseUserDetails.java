@@ -33,6 +33,10 @@ public class DatabaseUserDetails implements UserDetails {
         return username;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     @Override
     public String getPassword() {
         return password;

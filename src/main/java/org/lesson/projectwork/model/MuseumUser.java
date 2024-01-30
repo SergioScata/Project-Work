@@ -16,6 +16,8 @@ public class MuseumUser {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roleSet;
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Acquisto> acquisto;
 
     public Integer getId() {
         return id;
@@ -63,5 +65,13 @@ public class MuseumUser {
 
     public void setRoleSet(Set<Role> roleSet) {
         this.roleSet = roleSet;
+    }
+
+    public Set<Acquisto> getAcquisto() {
+        return acquisto;
+    }
+
+    public void setAcquisto(Set<Acquisto> acquisto) {
+        this.acquisto = acquisto;
     }
 }

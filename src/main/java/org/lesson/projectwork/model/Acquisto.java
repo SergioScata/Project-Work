@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table
@@ -24,6 +25,8 @@ public class Acquisto{
 
 
    private String nome;
+    @ManyToOne
+    private MuseumUser user;
 
     public String getNome() {
         return nome;
@@ -83,7 +86,15 @@ public class Acquisto{
         this.codice = codice;
     }
 
-public  BigDecimal getPrezzoTotale(){
+    public MuseumUser getUser() {
+        return user;
+    }
+
+    public void setUser(MuseumUser user) {
+        this.user = user;
+    }
+
+    public  BigDecimal getPrezzoTotale(){
         BigDecimal prezzoTotale= prezzoSingolo.multiply(new BigDecimal(quantita));
 
     return prezzoTotale;
