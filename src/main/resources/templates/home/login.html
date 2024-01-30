@@ -5,6 +5,8 @@
 <body class="">
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
+<main class="text-light" style="min-height: 727px; ">
+    <div class="text-center" style="width: 500px; height: 600px; background-color: #222222; margin: 0 auto;">
 <h1>Login</h1>
 <form th:action="@{/login}" method="post">
     <label for="username">Username:</label>
@@ -15,6 +17,9 @@
     <br/>
     <button type="submit">Login</button>
 </form>
+    </div>
+</main>
+
 <footer th:replace="fragments/resources :: footer"></footer>
 
 <th:block th:replace="fragments/resources :: script"></th:block>
