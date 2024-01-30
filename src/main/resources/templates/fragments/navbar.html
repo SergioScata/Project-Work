@@ -47,7 +47,8 @@
                     <span sec:authorize="!isAuthenticated()">Login</span>
                 </a>
                 <sec:authorize access="isAuthenticated()">
-                    <span sec:authorize="hasAuthority('USER')">Benvenuto, <span th:text="${#authentication.name}"></span></span>
+                    <span class="gold-text ps-3" sec:authorize="hasAuthority('USER')"> Benvenuto, <span
+                            th:text="${#authentication.name}"></span></span>
                     <a class="mt-4" href="/logout" sec:authorize="hasAuthority('USER')">Logout</a>
                     <a href="#" sec:authorize="hasAuthority('USER')">Carrello</a>
                 </sec:authorize>

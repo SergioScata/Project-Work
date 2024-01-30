@@ -6,16 +6,16 @@
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
 <main class="text-light" style="min-height: 727px; ">
-    <div class="text-center" style="width: 500px; height: 600px; background-color: #222222; margin: 0 auto;">
-<h1>Login</h1>
+    <div class="text-center" style="width: 470px; height: 400px; background-color: #222222e0; margin: 0 auto;">
+<h1 class="pt-5 mt-3">Accesso</h1>
 <form th:action="@{/login}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required />
+    <label for="username" class=" my-4 underbars"><i class="fa-regular fa-user"></i></label>
+    <input class="fs-5" type="text" style="background-color: transparent; border: none;" id="username" name="username" placeholder=" Username" required />
     <br/>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required />
+    <label for="password" class="mt-4 underbars"><i class="fa-solid fa-unlock"></i></label>
+    <input type="password" id="password" name="password" placeholder=" Password" class="fs-5" required style="background-color: transparent; border: none;" />
     <br/>
-    <button type="submit">Login</button>
+    <button type="submit" class="fs-3 mt-5 gold-text" style="background-color: transparent; border: none;">Login</button>
 </form>
     </div>
 </main>
