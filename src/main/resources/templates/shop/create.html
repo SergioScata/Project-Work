@@ -25,12 +25,14 @@
         </div>
 
 
-        <div class="col-7">
+        <div class="col-4">
             <label class="form-label logocolor mb-3" for="quantita"><h5>Seleziona quantità</h5></label>
-            <input class="form-control border-bottom-0 border-start-0 w-25"
-                   style="font-family: Arial, Helvetica, sans-serif;" type="number" id="quantita"
-                   th:field="*{quantita}"
-                   th:errorClass="is-invalid">
+            <select class="form-control border-bottom-0 border-start-0 w-25 fs-5 fw-semibold"
+                    id="quantita" th:field="*{quantita}"
+                    th:errorClass="is-invalid">
+                <option th:each="i : ${#numbers.sequence(1, prodotto.quantita)}" th:value="${i}"
+                        th:text="${i}"></option>
+            </select>
         </div>
 
 

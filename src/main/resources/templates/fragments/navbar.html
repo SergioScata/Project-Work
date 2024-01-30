@@ -38,7 +38,6 @@
                                    th:href="@{/assortimenti}">Assortimenti</a></li>
                             <li><a class="dropdown-item text-white"
                                    th:href="@{/amministrazione/contabilita}">Contabilità</a></li>
-
                         </ul>
                     </li>
                 </ul>
@@ -50,10 +49,10 @@
                     <span sec:authorize="!isAuthenticated()">Login</span>
                 </a>
                 <sec:authorize access="isAuthenticated()">
-                    <span class="gold-text ps-3" sec:authorize="hasAuthority('USER')"> Benvenuto, <span
+                    <span class="gold-text ps-4 fs-4" sec:authorize="hasAuthority('USER')"><span
                             th:text="${#authentication.name}"></span></span>
                     <a class="mt-4" href="/logout" sec:authorize="hasAuthority('USER')">Logout</a>
-                    <a href="#" sec:authorize="hasAuthority('USER')">Carrello</a>
+                    <a href="#" sec:authorize="hasAuthority('USER')">I tuoi Acquisti</a>
                 </sec:authorize>
             </div>
             <div>

@@ -10,9 +10,9 @@ INSERT INTO prodotto(prezzo,  descrizione, foto, nome) VALUES (60,  'Il vaso art
 INSERT INTO prodotto(prezzo,  descrizione, foto, nome) VALUES (180, 'La tela d\'arte moderna cattura immediatamente l\'attenzione degli spettatori con la fusione di colori, forme e concetti. Il colore è uno degli elementi chiave di questa opera d\'arte moderna', '/tela-moderna.png', 'Tela d\'Arte Moderna');
 INSERT INTO `role` (name) VALUES('ADMIN');
 INSERT INTO `role` (name) VALUES('USER');
-INSERT INTO museum_user (email, first_name, last_name, password) VALUES('admin', 'Jane', 'Doe', '{noop}admin');
-INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user', 'John', 'Doe', '{noop}user');
-INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user2', 'gina', 'bellina', '{noop}user2');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('Admin', 'Jane', 'Doe', '{noop}admin');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('User', 'John', 'Doe', '{noop}user');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('User2', 'gina', 'bellina', '{noop}user2');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');
