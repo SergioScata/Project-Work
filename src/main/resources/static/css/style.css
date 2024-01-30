@@ -98,6 +98,20 @@ body{
         position: absolute;
       }
 
+.underbars {
+        position: relative;
+      }
+      .underbars:before {
+          content: "";
+          display: block;
+          width: 267px;
+          height: 1px;
+          background: #E3AA54;
+          left: -17px;
+          top: 35px;
+          position: absolute;
+      }
+
 
 /* sidebar style*/
 .sidebar {
