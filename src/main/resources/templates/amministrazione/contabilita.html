@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
 
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+<body class="position-relative" id="main">
+
+<main class="container" style="min-height: 720px;">
+
+    <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
+         class="bg-body-secondary  bd-example-toasts rounded-3">
+        <div class="toast-container p-3 top-20 start-50 translate-middle-x" id="toastPlacement"
+             data-original-class="toast-container p-3">
+            <div class="toast fade show">
+                <div class="toast-header">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <strong class="me-auto">Museo alert</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" th:text="${redirectMessage}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+
+        <div class="row">
+
+            <div class="col-12 col-lg-8">
+                <table class="table table-striped mt-2" >
+                    <thead>
+
+                    <tr>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Quantità</th>
+                        <th>Prodotto</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="entry : ${entrate}">
+                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.dataAcquisto} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof acquisto} ? 'acquisto' : ''"></td>
+                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.quantita} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof acquisto} ? ${entry.prodotto.nome} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.dataAssortimento} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof assortimento} ? 'assortimento' : ''"></td>
+                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.quantitaAcquistata} : ''"></td>
+                        <td th:text="${entry != null && entry instanceof assortimento} ? ${entry.prodotto.nome} : ''"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
 </body>
 </html>
