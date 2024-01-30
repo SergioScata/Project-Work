@@ -71,11 +71,7 @@ public class AcquistoController {
             return "shop/create";
         }
         DatabaseUserDetails loggedUser = (DatabaseUserDetails) authentication.getPrincipal();
-
-
         formAcquisto.setUser(museumUserRepository.findById(loggedUser.getId()).get());
-
-
         formAcquisto.setDataAcquisto(LocalDate.now());
         formAcquisto.setPrezzoSingolo(formAcquisto.getProdotto().getPrezzo());
         Random random = new Random();
