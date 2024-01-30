@@ -20,7 +20,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:classappend="${area == 'shop' ? 'active' : ''}"
-                           th:href="@{/shop}" sec:authorize="hasAuthority('USER')">Shop</a>
+                           th:href="@{/shop}" sec:authorize="hasAnyAuthority('ADMIN','USER')">Shop</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle "
@@ -49,11 +49,11 @@
                     <span sec:authorize="!isAuthenticated()">Login</span>
                 </a>
                 <sec:authorize access="isAuthenticated()">
-                    <span class="gold-text ps-4 fs-4" sec:authorize="hasAuthority('USER')"><span
+                    <span class="gold-text ps-4 fs-4" sec:authorize="hasAnyAuthority('ADMIN','USER')"><span
                             th:text="${#authentication.name}"></span></span>
-                    <a class="mt-4" href="/logout" sec:authorize="hasAuthority('USER')">Logout</a>
-                    <a href="/user/acquisti" sec:authorize="hasAuthority('USER')">I tuoi Acquisti</a>
-                    <a href="/user" sec:authorize="hasAuthority('USER')">Il tuo Profilo</a>
+                    <a class="mt-4" href="/logout" sec:authorize="hasAnyAuthority('ADMIN','USER')">Logout</a>
+                    <a href="/user/acquisti" sec:authorize="hasAnyAuthority('ADMIN','USER')">I tuoi Acquisti</a>
+                    <a href="/user" sec:authorize="hasAnyAuthority('ADMIN','USER')">Il tuo Profilo</a>
                 </sec:authorize>
             </div>
             <div>

@@ -14,7 +14,6 @@ INSERT INTO museum_user (email, first_name, last_name, password) VALUES('Admin',
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('User', 'John', 'Doe', '{noop}user');
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('User2', 'gina', 'bellina', '{noop}user2');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
-
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(3, 'USER');
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'tazze', 'Ceramic industries', 2, 200, 1);
