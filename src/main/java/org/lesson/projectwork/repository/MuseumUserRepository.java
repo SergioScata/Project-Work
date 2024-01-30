@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface MuseumUserRepository extends JpaRepository<MuseumUser, Integer> {
     Optional<MuseumUser> findByEmail(String email);
+    Optional<MuseumUser> findById(String id);
 }

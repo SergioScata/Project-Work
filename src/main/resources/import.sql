@@ -12,7 +12,20 @@ INSERT INTO `role` (name) VALUES('ADMIN');
 INSERT INTO `role` (name) VALUES('USER');
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('admin', 'Jane', 'Doe', '{noop}admin');
 INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user', 'John', 'Doe', '{noop}user');
+INSERT INTO museum_user (email, first_name, last_name, password) VALUES('user2', 'gina', 'bellina', '{noop}user2');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMIN');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');
+INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(3, 'USER');
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'tazze', 'Ceramic industries', 2, 200, 1);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'libri', 'libreria antica', 7, 200,2);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'poster', 'History art', 3, 200, 3);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'repliche statue', 'Ceramic industries', 14, 200, 4);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'gioielli', 'Ceramic industries', 6, 200, 5);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'puzzle', 'jewerly industries', 3, 200, 6);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'cartoline', 'libreria antica ', 1, 200, 7);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'modelli archittetonici', 'Ceramic industries', 22, 200, 8);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'vaso antico', 'Ceramic industries', 34, 200, 9);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'tela d\'arte moderna  ',' libreria antica', 89, 200, 10);
+
 
