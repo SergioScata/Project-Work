@@ -74,9 +74,6 @@ body{
     font-family: 'Cormorant Garamond', serif;
     background-image: url('https://wallpapers.com/images/hd/black-marble-4k-7dw4ifkh90klrak4.jpg');
     background-repeat: no-repeat;
-        margin: 0 auto;
-       width: 100%;
-       height: 600px;
        display: block;
        position: relative;
        background-attachment:fixed;
@@ -94,7 +91,7 @@ body{
         height: 2px;
         background: #E3AA54;
         left: -230px;
-        top: 43%;
+        top: 40px;
         position: absolute;
       }
 
@@ -157,8 +154,8 @@ body{
   background-color: #444;
 }
 
-#main {
-  transition: margin-right .5s;
+#transition {
+  transition: margin-right .5s !important;
 }
 
 
