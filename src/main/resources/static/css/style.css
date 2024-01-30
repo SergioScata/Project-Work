@@ -173,6 +173,16 @@ body{
   transition: margin-right .5s !important;
 }
 
+/*.home_background {
+ background-image: url('/statua1.png');
+ background-repeat: no-repeat;
+    background-position:center right;
+    poition: relative
+  right: 0;
+  top: 50;
+
+}*/
+
 
 
 
