@@ -30,7 +30,7 @@
             <select class="form-control border-bottom-0 border-start-0 w-25 fs-5 fw-semibold"
                     id="quantita" th:field="*{quantita}"
                     th:errorClass="is-invalid">
-                <option th:each="i : ${#numbers.sequence(1, prodotto.quantita)}" th:value="${i}"
+                <option th:each="i : ${#numbers.sequence(minQ, prodotto.quantita)}" th:value="${i}"
                         th:text="${i}"></option>
             </select>
         </div>

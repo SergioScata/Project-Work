@@ -45,7 +45,7 @@ public class AcquistoController {
         model.addAttribute("preloadSearch", searchKeyword);
         return "shop/list";
     }
-
+public final int minQuantita= 0;
     @GetMapping("/create")
     public String create(@RequestParam(name = "prodottoId", required = true) Integer prodottoId, Model model) {
         Optional<Prodotto> result = prodottoRepository.findById(prodottoId);
@@ -54,6 +54,7 @@ public class AcquistoController {
             model.addAttribute("prodotto", prodottoToBuy);
             Acquisto newAcquisto = new Acquisto();
             newAcquisto.setProdotto(prodottoToBuy);
+            model.addAttribute("minQ", minQuantita);
 
 
             model.addAttribute("acquisto", newAcquisto);
