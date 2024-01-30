@@ -109,6 +109,21 @@ body{
           position: absolute;
       }
 
+.show_undersection {
+        position: relative;
+      }
+      .show_undersection:before {
+          content: "";
+          display: block;
+          width: 75%;
+          height: 449px;
+          background: #ffff;
+          left: 476px;
+          top: 61px;
+          position: absolute;
+          z-index: -1;
+      }
+
 
 /* sidebar style*/
 .sidebar {
