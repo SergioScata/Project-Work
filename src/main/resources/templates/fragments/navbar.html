@@ -53,7 +53,8 @@
                     <span class="gold-text ps-3" sec:authorize="hasAuthority('USER')"> Benvenuto, <span
                             th:text="${#authentication.name}"></span></span>
                     <a class="mt-4" href="/logout" sec:authorize="hasAuthority('USER')">Logout</a>
-                    <a href="#" sec:authorize="hasAuthority('USER')">Carrello</a>
+                    <a href="/user/acquisti" sec:authorize="hasAuthority('USER')">I tuoi Acquisti</a>
+                    <a href="/user" sec:authorize="hasAuthority('USER')">Il tuo Profilo</a>
                 </sec:authorize>
             </div>
             <div>

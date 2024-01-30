@@ -29,7 +29,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests()
                 .requestMatchers("/amministrazione/edit/**", "/amministrazione/delete/**")
                 .hasAuthority("ADMIN")
-                .requestMatchers("/shop", "/shop/show/**", "/shop/create/**").hasAnyAuthority("ADMIN", "USER")
+                .requestMatchers("/shop", "/shop/show/**", "/shop/create/**").hasAnyAuthority("USER")
                 .requestMatchers("/amministrazione").hasAnyAuthority("ADMIN")
                 .requestMatchers("/amministrazione/show/**").hasAuthority("ADMIN")
                 .requestMatchers("/", "/**").permitAll()
