@@ -48,6 +48,9 @@
                 <a class="mt-4 login-link" th:href="@{/login}">
                     <span sec:authorize="!isAuthenticated()">Login</span>
                 </a>
+                <a class="mt-4 login-link" th:href="@{/user/register}">
+                    <span sec:authorize="!isAuthenticated()">Register</span>
+                </a>
                 <sec:authorize access="isAuthenticated()">
                     <span class="gold-text ps-4 fs-4" sec:authorize="hasAnyAuthority('ADMIN','USER')"><span
                             th:text="${#authentication.name}"></span></span>

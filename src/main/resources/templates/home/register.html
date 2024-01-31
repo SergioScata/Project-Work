@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<body id="transition">
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+
+<main class="container mt-4" style="min-height: 720px;">
+
+    <div class="mt-5 mb-4 row title">
+        <div class="col-8 gold-text">
+            <h1 class="font">Registrazione Utente</h1>
+        </div>
+    </div>
+
+
+    <form id="ingredients-create" class="row"
+          th:action="@{/user/register}"
+          th:object="${user}"
+          method="post">
+
+
+        <div class="col-3 mt-3">
+            <label class="form-label " for="firstName"><h3>firstName</h3></label>
+            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
+                   id="firstName" th:field="*{firstName}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback " th:if="${#fields.hasErrors('firstName')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-3 mt-3">
+            <label class="form-label " for="lastName"><h3>lastName</h3></label>
+            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
+                   step="0.01" id="lastName" th:field="*{lastName}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback " th:if="${#fields.hasErrors('lastName')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-5"></div>
+
+        <div class="mt-3 col-4">
+            <label class="form-label" for="email"><h4>username</h4></label>
+            <input class="form-control" style="font-family: Arial, Helvetica, sans-serif;" type="text"
+                   id="email" th:field="*{email}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-3 col-4">
+            <label class="form-label" for="password"><h4>password</h4></label>
+            <input class="form-control" style="font-family: Arial, Helvetica, sans-serif;" type="text"
+                   id="password" th:field="*{password}"
+                   th:errorClass="is-invalid">
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-12 mt-4 mb-4">
+            <button type="submit" class="btn btn-outline text-color-custom me-2">Save</button>
+            <a class="btn btn-outline text-color-custom" th:href="@{/}">Cancel</a>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>

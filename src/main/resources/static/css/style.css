@@ -78,6 +78,8 @@ body{
        position: relative;
        background-attachment:fixed;
        background-position:center center;
+       background-size: cover;
+
 }
 
 /* linee */
