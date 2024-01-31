@@ -26,10 +26,28 @@
 
 
         <div class="row">
-
-            <div class="col-12 col-lg-10">
+            <div class="col-12">
+                <div>
+                    <table class="table table-striped mt-2">
+                        <thead>
+                        <tr>
+                            <th>Totale Entrate</th>
+                            <th>Totale Uscite</th>
+                            <th>Totale Profitti</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${totaleEntrate}"></td>
+                            <td th:text="${totaleUscite}"></td>
+                            <td th:text="${totaleCosti}"
+                                th:classappend="${totaleCosti <= 0 ? 'text-danger' : 'text-success'}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="row">
-                    <div clss="col-5">
+                    <div class="col-6">
                         <table class="table table-striped mt-2">
                             <thead>
 
@@ -47,13 +65,15 @@
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? 'acquisto' : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.quantita} : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.prodotto.nome} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? |${entry.prezzoTotale} €| : ''"></td>
+                                <td class="text-success"
+                                    th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? |${entry.prezzoTotale} €| : ''"></td>
 
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-5">
+
+                    <div class="col-6">
                         <table class="table table-striped mt-2">
                             <thead>
 
@@ -71,7 +91,8 @@
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? 'assortimento' : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.quantitaAcquistata} : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.prodotto.nome} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? |${entry.prezzoTotale} €|: ''"></td>
+                                <td class="text-danger"
+                                    th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? |- ${entry.prezzoTotale} €|: ''"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -79,9 +100,7 @@
                 </div>
 
             </div>
-
         </div>
-
 
     </div>
 

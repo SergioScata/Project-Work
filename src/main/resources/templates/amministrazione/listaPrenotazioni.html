@@ -39,7 +39,7 @@
         <div class="row">
 
             <div class="col-12 col-lg-8">
-                <table class="table table-striped mt-2" th:unless="${prenotazioniList.size == 0}">
+                <table class="table table-striped mt-2 table-shadow" th:unless="${prenotazioniList.size == 0}">
                     <thead>
                     <tr>
                         <th scope="col">Codice transazione</th>
@@ -77,12 +77,17 @@
                         <td>
                             <div class="badge text-dark "><h6 th:text="${acq.user.email} "></h6></div>
                         </td>
-                        <td><form
-                                id="create-acquisto"
-                                method="post"
-                                th:action="@{/conferma/{id}(id=${acq.id})}"
-                                class="row gy-3"
-                        ><button class="btn btn-outline-warning text-color-custom me-2 fw-semibold">Conferma</button></form></td>
+                        <td>
+                            <form
+                                    id="create-acquisto"
+                                    method="post"
+                                    th:action="@{/conferma/{id}(id=${acq.id})}"
+                                    class="row gy-3"
+                            >
+                                <button class="btn btn-outline-warning text-color-custom me-2 fw-semibold">Conferma
+                                </button>
+                            </form>
+                        </td>
 
 
                     </tr>

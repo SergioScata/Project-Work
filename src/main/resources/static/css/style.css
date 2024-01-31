@@ -81,6 +81,16 @@ body{
        background-size: cover;
 
 }
+
+.table-shadow {
+box-shadow: 17px 20px 7px 8px #e5b95359;
+}
+
+.table-group-divider {
+    color: black;
+    border-top: calc(var(--bs-border-width) * 2) solid currentcolor;
+}
+
 /* slider */
 
 #cCarousel {
