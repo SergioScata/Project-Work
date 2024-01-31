@@ -107,3 +107,21 @@ window.addEventListener('scroll', function() {
 
         statua.style.transform = 'translateY(' + (-scrollPosition * speed) + 'px)';
     });
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("big_title").style.fontSize = "1.0em";
+  } else {
+    document.getElementById("big_title").style.fontSize = "1.4em";
+  }
+
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      document.getElementById("big_title").style.left = "-100em";
+    } else {
+      document.getElementById("big_title").style.left = "-5em";
+    }
+}
+
+
