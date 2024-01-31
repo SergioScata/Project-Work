@@ -47,37 +47,42 @@
         <div class="row">
 
             <div class="col-12 col-lg-8">
-                <table class="table table-striped mt-2" th:unless="${assortimentiList.size == 0}">
+                <table class="table table-striped mt-2 table-shadow" th:unless="${assortimentiList.size == 0}">
                     <thead>
                     <tr>
-                        <th scope="col">DataAssortimento</th>
-                        <th scope="col">prodotto Acquistato</th>
-                        <th scope="col">Quantità Acquistato</th>
-                        <th scope="col">Nome fornitore</th>
-                        <th scope="col">prezzo per unità</th>
-                        <th scope="col">prezzo totale</th>
+                        <th scope="col"><h5>DataAssortimento</h5></th>
+                        <th scope="col"><h5>Prodotto Acquistato</h5></th>
+                        <th scope="col"><h5>Quantità Acquistato</h5></th>
+                        <th scope="col"><h5>Nome Fornitore</h5></th>
+                        <th scope="col"><h5>Prezzo Unità</h5></th>
+                        <th scope="col"><h5>Prezzo Totale</h5></th>
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody class="table-group-divider">
                     <tr th:each="ass : ${assortimentiList}"
                     >
                         <div>
-                            <td class="fw-normal name-list-w"><h5 th:text="${ass.dataAssortimento}"></h5></td>
+                            <td class="fw-normal name-list-w"><h5 th:text="${ass.dataAssortimento}"
+                                                                  class="fw-semibold"></h5></td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.nome}"></h6></div>
+                                <div class="badge text-dark"><h6 th:text="${ass.nome}" class="fw-semibold"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.quantitaAcquistata}"></h6></div>
+                                <div class="badge text-dark"><h6 th:text="${ass.quantitaAcquistata}"
+                                                                 class="fw-semibold"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.nomeFornitore}"></h6></div>
+                                <div class="badge text-dark"><h6 th:text="${ass.nomeFornitore}"
+                                                                 class="fw-semibold"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.prezzoSingolo}  + ' ' + € "></h6></div>
+                                <div class="badge text-dark"><h6 th:text="${ass.prezzoSingolo}  + ' ' + € "
+                                                                 class="fw-semibold"></h6></div>
                             </td>
                             <td>
-                                <div class="badge text-dark"><h6 th:text="${ass.prezzoTotale}  + ' ' + € "></h6></div>
+                                <div class="badge text-dark"><h6 th:text="${ass.prezzoTotale}  + ' ' + € "
+                                                                 class="fw-semibold"></h6></div>
                             </td>
 
                         </div>
