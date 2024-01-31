@@ -165,6 +165,8 @@ next.addEventListener("click", () => {
   if (carouselInnerWidth - Math.abs(leftValue) > carouselVpWidth) {
     leftValue -= totalMovementSize;
     cCarouselInner.style.left = leftValue + "px";
+  } else {  leftValue = 0;
+  cCarouselInner.style.left = "0" + "px";
   }
 });
 
