@@ -29,25 +29,17 @@
                 <h1>Transazioni utenti</h1>
             </div>
 
-            <form class="col-3" id="prodotto-search" th:action="@{/transazioni}" method="get"
-                  style="font-family: Arial, Helvetica, sans-serif;">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="keyword" id="keyword"
-                           placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
-                    <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-            </form>
+
         </div>
 
-        <div th:if="${acquistoList.size == 0}" class="mt-5 pt-3 text-center">
+        <div th:if="${prenotazioniList.size == 0}" class="mt-5 pt-3 text-center">
             <h2>The list is empty</h2>
         </div>
 
         <div class="row">
 
             <div class="col-12 col-lg-8">
-                <table class="table table-striped mt-2" th:unless="${acquistoList.size == 0}">
+                <table class="table table-striped mt-2" th:unless="${prenotazioniList.size == 0}">
                     <thead>
                     <tr>
                         <th scope="col">Codice transazione</th>
@@ -58,12 +50,11 @@
                         <th scope="col ">Prezzo totale</th>
                         <th scope="col ">Utente</th>
 
-
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr th:each="acq : ${acquistoList}">
+                    <tr th:each="acq : ${prenotazioniList}">
 
                         <td>
                             <div class="fw-normal name-list-w "><h5 th:text="${acq.codice}"></h5></div>
@@ -86,6 +77,12 @@
                         <td>
                             <div class="badge text-dark "><h6 th:text="${acq.user.email} "></h6></div>
                         </td>
+                        <td><form
+                                id="create-acquisto"
+                                method="post"
+                                th:action="@{/conferma/{id}(id=${acq.id})}"
+                                class="row gy-3"
+                        ><button class="btn btn-outline-warning text-color-custom me-2 fw-semibold">Conferma</button></form></td>
 
 
                     </tr>

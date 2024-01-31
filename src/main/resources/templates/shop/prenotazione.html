@@ -7,24 +7,20 @@
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
 <main class="container h-100" style="min-height: 760px;">
-    <span th:if="${prodotto.quantita>0}">
-
 
     <form
-            id="create-acquisto"
+            id="create-prenotazione"
             method="post"
-            th:object="${acquisto}"
+            th:object="${prenotazione}"
             th:action="@{/shop/create}"
             class="row gy-3"
     >
         <input type="hidden" th:field="*{prodotto}">
-        <h1 class="mb-5 mt-5 title gold-text">Acquista <span th:text="${prodotto.nome}"></span></h1>
+        <h1 class="mb-5 mt-5 title gold-text">Prenota <span th:text="${prodotto.nome}"></span></h1>
 
         <div class="row"></div>
 
-        <div class="img-td-width col-4"><img
-                class="img-fluid w-75 mt-3" th:src="@{${prodotto.foto}}">
-        </div>
+
 
 
         <div class="col-4">
@@ -32,7 +28,7 @@
             <select class="form-control border-bottom-0 border-start-0 w-25 fs-5 fw-semibold"
                     id="quantita" th:field="*{quantita}"
                     th:errorClass="is-invalid">
-                <option th:each="i : ${#numbers.sequence(minQ, prodotto.quantita)}" th:value="${i}"
+                <option th:each="i : ${#numbers.sequence(1, 200)}" th:value="${i}"
                         th:text="${i}"></option>
             </select>
         </div>
@@ -46,7 +42,6 @@
             <a class="btn btn-outline-warning text-color-custom" th:href="@{/shop}">Cancella</a>
         </div>
     </form>
-    </span>
 
 </main>
 

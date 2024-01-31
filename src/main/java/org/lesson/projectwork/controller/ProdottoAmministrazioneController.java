@@ -3,9 +3,11 @@ package org.lesson.projectwork.controller;
 import jakarta.validation.Valid;
 import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Assortimento;
+import org.lesson.projectwork.model.Prenotazione;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AcquistoRepository;
 import org.lesson.projectwork.repository.AssortimentoRepository;
+import org.lesson.projectwork.repository.PrenotazioneRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +31,8 @@ public class ProdottoAmministrazioneController {
     private AcquistoRepository acquistoRepository;
     @Autowired
     private AssortimentoRepository assortimentoRepository;
-
+    @Autowired
+    PrenotazioneRepository prenotazioneRepository;
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
         List<Prodotto> prodottoList;
@@ -122,6 +125,15 @@ public class ProdottoAmministrazioneController {
 
         model.addAttribute("acquistoList", acquistoList);
         return "amministrazione/listaAcquisti";
+    }
+    @GetMapping("/prenotazioni")
+    public String prenotazioni(Model model) {
+        List<Prenotazione> prenotazioneList;
+
+        prenotazioneList = prenotazioneRepository.findAll();
+
+        model.addAttribute("prenotazioniList", prenotazioneList);
+        return "amministrazione/listaPrenotazioni";
     }
 
     @GetMapping("/contabilita")
