@@ -117,11 +117,17 @@ function scrollFunction() {
     document.getElementById("big_title").style.fontSize = "1.4em";
   }
 
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+  if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
       document.getElementById("big_title").style.left = "-100em";
     } else {
       document.getElementById("big_title").style.left = "-5em";
     }
+
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+          document.getElementById("big_title").style.top = "5em";
+        } else {
+          document.getElementById("big_title").style.top = "-5em";
+        }
 }
 
 
