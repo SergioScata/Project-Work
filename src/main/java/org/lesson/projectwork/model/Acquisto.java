@@ -25,6 +25,7 @@ public class Acquisto{
 
 
    private String nome;
+
     @ManyToOne
     private MuseumUser user;
 
