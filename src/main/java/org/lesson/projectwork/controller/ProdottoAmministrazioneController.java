@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -141,6 +142,8 @@ public class ProdottoAmministrazioneController {
         List<Acquisto> acquisti = acquistoRepository.findAll();
         List<Assortimento> assortimenti = assortimentoRepository.findAll();
         List<Object> entries = new ArrayList<>();
+        BigDecimal totalAcquisti = BigDecimal.ZERO;
+        BigDecimal totalAssortimenti= BigDecimal.ZERO;
         for (Acquisto acquisto : acquisti) {
             entries.add(acquisto);
         }
@@ -156,6 +159,16 @@ public class ProdottoAmministrazioneController {
                 return 0;
             }
         });
+        for (Acquisto a: acquisti){
+            totalAcquisti= totalAcquisti.add(a.getPrezzoTotale());
+        }
+        for (Assortimento a: assortimenti){
+            totalAssortimenti= totalAssortimenti.add(a.getPrezzoTotale());
+        }
+        BigDecimal incasso= totalAcquisti.subtract(totalAssortimenti);
+        model.addAttribute("totaleCosti",incasso);
+        model.addAttribute("totaleEntrate", totalAcquisti);
+        model.addAttribute("totaleUscite",totalAssortimenti);
         model.addAttribute("entrate", entries);
         return "amministrazione/contabilita";
     }
