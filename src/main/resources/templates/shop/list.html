@@ -12,7 +12,7 @@
 
         <div class="mt-2 pt-3 mb-4 row justify-content-between title">
             <div class="col-8 gold-text">
-                <h1>Catalogo Prodotti</h1>
+                <h1 >Catalogo Prodotti</h1>
             </div>
 
             <form class="col-3" id="prodotto-search" th:action="@{/shop}" method="get" style="font-family: Arial, Helvetica, sans-serif;">
@@ -31,7 +31,7 @@
 
         <!--cards-->
 
-        <section class="row justify-content-around g-5 mb-5 pb-5 mt-4 " style="background-color: #222222a3; margin-bottom: 30px;">
+        <section class="row justify-content-around g-5 mb-5 py-5 mt-4 " style="background-color: #222222a3; margin-bottom: 30px;">
             <div  class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottoList} ">
                 <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
                     <div class="img-hover">
