@@ -37,7 +37,7 @@ public class HomeController {
         Comparator comparator= new ProdottoAcquistoComparator();
 
         Collections.sort(prodottoList,Collections.reverseOrder(comparator));
-        topProdotti=prodottoList.subList(0,3);
+        topProdotti=prodottoList.subList(0,5);
 
 
         model.addAttribute("prodottiTop", topProdotti);
