@@ -26,5 +26,6 @@ INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'modelli archittetonici', 'Ceramic industries', 22, 200, 8);
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'vaso antico', 'Ceramic industries', 34, 200, 9);
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'tela d\'arte moderna  ',' libreria antica', 89, 200, 10);
+INSERT INTO acquisto(codice, data_acquisto, nome, prezzo_singolo, quantita, prodotto_id, user_id)VALUES(234535, '2024-01-29', 'tazze', 7, 10, 1, 1);
 
 
