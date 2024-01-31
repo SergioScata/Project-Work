@@ -5,14 +5,29 @@
 <body class="position-relative" id="transition">
 <header th:replace="fragments/navbar.html :: navbar('home')"></header>
 
-<main class="container" style="background-color: #222222a3; margin-top: 10em;">
-    <div class="home_background mb-5" style="height: 800px; ">
+<main class="container" style="background-color: #222222a3; margin-top: 15em;">
+
+    <div style="position: relative; right: 10%; top: -6em;">
         <h1 style="font-size: 6.5em;">WELCOME </h1>
         <h1 style="font-size: 6.5em;">TO THE MUSEUM</h1>
-        <img src="/statua1.png" style=" position: relative; right: -65%; top: -40%; transform: scale(130%);">
     </div>
 
-    <section class="row justify-content-around g-5 mb-5 pb-5 mt-4 ">
+    <div class="home_background mb-5" style="height: 800px; ">
+        <img src="/statua1.png" id="statua"
+             style=" position: relative; right: -65%; top: -40%; width: 40em;">
+        <div class="border text-center w-50" style=" position: relative; left: 10%; top: -30%; ">
+            <h6>
+                Lorem nainfianiuvnwvnvnnsvnklv sj kjs ksn sk
+            </h6>
+        </div>
+    </div>
+
+    <div class="home_row_gold"></div>
+
+    <h2 class="pt-3 text-center">Most appreciated</h2>
+
+
+    <section class="row justify-content-around g-5 mb-5 pt-3 mt-4 ">
         <div class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottoList}">
             <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
                 <div class="img-hover">

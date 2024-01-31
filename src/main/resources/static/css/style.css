@@ -60,7 +60,7 @@ color: #E3AA54;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Assicura che la sezione resti sopra gli altri elementi */
+    z-index: 1000;
     background-color: #fff;
     padding: 10px;
 }
@@ -80,6 +80,8 @@ body{
        background-position:center center;
 
 }
+
+/* linee */
 
 .title {
         position: relative;
@@ -125,7 +127,22 @@ body{
       }
 
 
+.home_row_gold {
+        position: relative;
+      }
+      .home_row_gold:before {
+          content: "";
+          display: block;
+          width: 1650px;
+          height: 1px;
+          background: #E3AA54;
+          left: -200px;
+          position: absolute;
+      }
+
+
 /* sidebar style*/
+
 .sidebar {
   height: 100%;
   width: 0;
@@ -173,30 +190,11 @@ body{
   transition: margin-right .5s !important;
 }
 
-/*.home_background {
- background-image: url('/statua1.png');
- background-repeat: no-repeat;
-    background-position:center right;
-    poition: relative
-  right: 0;
-  top: 50;
-
-}*/
-
 
 
 
 /*     IA      */
 
-
-
-/*
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-*/
 
 
 .chatbot-toggler {
@@ -320,7 +318,6 @@ header h2 {
     text-align: center;
     line-height: 32px;
     align-self: flex-end;
-    /* background: url('../../public/img/IAHelpLogo2-removebg-preview.png'); */
     border-radius: 4px;
     margin: 0 0px 7px 0;
 }

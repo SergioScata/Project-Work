@@ -100,3 +100,10 @@ function closeNav() {
   document.body.style.marginRight= "0";
 }
 
+window.addEventListener('scroll', function() {
+        const statua = document.getElementById('statua');
+        const scrollPosition = window.pageYOffset;
+        const speed = -0.90;
+
+        statua.style.transform = 'translateY(' + (-scrollPosition * speed) + 'px)';
+    });
