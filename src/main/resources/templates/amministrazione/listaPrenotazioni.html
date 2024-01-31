@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+<body class="position-relative" id="transition">
+
+<main class="container" style="min-height: 720px;">
+
+    <div th:if="${redirectMessage !=null}" aria-live="polite" aria-atomic="true"
+         class="bg-body-secondary  bd-example-toasts rounded-3">
+        <div class="toast-container p-3 top-20 start-50 translate-middle-x" id="toastPlacement"
+             data-original-class="toast-container p-3">
+            <div class="toast fade show">
+                <div class="toast-header">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <strong class="me-auto">Museo alert</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" th:text="${redirectMessage}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+        <div class="mt-4 mb-4 row">
+            <div class="col-8 gold-text title">
+                <h1>Transazioni utenti</h1>
+            </div>
+
+
+        </div>
+
+        <div th:if="${prenotazioniList.size == 0}" class="mt-5 pt-3 text-center">
+            <h2>The list is empty</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-lg-8">
+                <table class="table table-striped mt-2" th:unless="${prenotazioniList.size == 0}">
+                    <thead>
+                    <tr>
+                        <th scope="col">Codice transazione</th>
+                        <th scope="col ">Data Acquisto</th>
+                        <th scope="col ">Prodotto Acquistato</th>
+                        <th scope="col ">Quantità</th>
+                        <th scope="col ">Prezzo unità</th>
+                        <th scope="col ">Prezzo totale</th>
+                        <th scope="col ">Utente</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="acq : ${prenotazioniList}">
+
+                        <td>
+                            <div class="fw-normal name-list-w "><h5 th:text="${acq.codice}"></h5></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark"><h6 th:text="${acq.dataAcquisto}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.nome}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.quantita}"></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.prezzoSingolo}  + ' ' + € "></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.prezzoTotale}  + ' ' + € "></h6></div>
+                        </td>
+                        <td>
+                            <div class="badge text-dark "><h6 th:text="${acq.user.email} "></h6></div>
+                        </td>
+                        <td><form
+                                id="create-acquisto"
+                                method="post"
+                                th:action="@{/conferma/{id}(id=${acq.id})}"
+                                class="row gy-3"
+                        ><button class="btn btn-outline-warning text-color-custom me-2 fw-semibold">Conferma</button></form></td>
+
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</main>
+
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>

@@ -3,9 +3,11 @@ package org.lesson.projectwork.controller;
 import jakarta.validation.Valid;
 import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Assortimento;
+import org.lesson.projectwork.model.Prenotazione;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AcquistoRepository;
 import org.lesson.projectwork.repository.AssortimentoRepository;
+import org.lesson.projectwork.repository.PrenotazioneRepository;
 import org.lesson.projectwork.repository.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +32,8 @@ public class ProdottoAmministrazioneController {
     private AcquistoRepository acquistoRepository;
     @Autowired
     private AssortimentoRepository assortimentoRepository;
-
+    @Autowired
+    PrenotazioneRepository prenotazioneRepository;
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
         List<Prodotto> prodottoList;
@@ -123,12 +127,23 @@ public class ProdottoAmministrazioneController {
         model.addAttribute("acquistoList", acquistoList);
         return "amministrazione/listaAcquisti";
     }
+    @GetMapping("/prenotazioni")
+    public String prenotazioni(Model model) {
+        List<Prenotazione> prenotazioneList;
+
+        prenotazioneList = prenotazioneRepository.findAll();
+
+        model.addAttribute("prenotazioniList", prenotazioneList);
+        return "amministrazione/listaPrenotazioni";
+    }
 
     @GetMapping("/contabilita")
     public String contabilita(Model model) {
         List<Acquisto> acquisti = acquistoRepository.findAll();
         List<Assortimento> assortimenti = assortimentoRepository.findAll();
         List<Object> entries = new ArrayList<>();
+        BigDecimal totalAcquisti = BigDecimal.ZERO;
+        BigDecimal totalAssortimenti= BigDecimal.ZERO;
         for (Acquisto acquisto : acquisti) {
             entries.add(acquisto);
         }
@@ -144,6 +159,16 @@ public class ProdottoAmministrazioneController {
                 return 0;
             }
         });
+        for (Acquisto a: acquisti){
+            totalAcquisti= totalAcquisti.add(a.getPrezzoTotale());
+        }
+        for (Assortimento a: assortimenti){
+            totalAssortimenti= totalAssortimenti.add(a.getPrezzoTotale());
+        }
+        BigDecimal incasso= totalAcquisti.subtract(totalAssortimenti);
+        model.addAttribute("totaleCosti",incasso);
+        model.addAttribute("totaleEntrate", totalAcquisti);
+        model.addAttribute("totaleUscite",totalAssortimenti);
         model.addAttribute("entrate", entries);
         return "amministrazione/contabilita";
     }

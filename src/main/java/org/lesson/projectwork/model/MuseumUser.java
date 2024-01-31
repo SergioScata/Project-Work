@@ -18,6 +18,8 @@ public class MuseumUser {
     private Set<Role> roleSet;
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private Set<Acquisto> acquisto;
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private Set<Prenotazione> prenotazione;
 
     public Integer getId() {
         return id;

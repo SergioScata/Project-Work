@@ -38,6 +38,8 @@
                                    th:href="@{/assortimenti}">Assortimenti</a></li>
                             <li><a class="dropdown-item text-white"
                                    th:href="@{/amministrazione/contabilita}">Contabilità</a></li>
+                            <li><a class="dropdown-item text-white"
+                                   th:href="@{/amministrazione/prenotazioni}">Prenotazioni</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -57,6 +59,7 @@
                     <a class="mt-4" href="/logout" sec:authorize="hasAnyAuthority('ADMIN','USER')">Logout</a>
                     <a href="/user/acquisti" sec:authorize="hasAnyAuthority('ADMIN','USER')">I tuoi Acquisti</a>
                     <a href="/user" sec:authorize="hasAnyAuthority('ADMIN','USER')">Il tuo Profilo</a>
+
                 </sec:authorize>
             </div>
             <div>
