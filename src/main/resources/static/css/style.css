@@ -78,6 +78,7 @@ body{
        position: relative;
        background-attachment:fixed;
        background-position:center center;
+       background-size: cover;
 
 }
 
@@ -188,6 +189,10 @@ body{
 
 #transition {
   transition: margin-right .5s !important;
+}
+
+#big_title {
+
 }
 
 
