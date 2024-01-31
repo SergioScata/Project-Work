@@ -23,9 +23,11 @@
 
                 <div class="row d-flex justify-content-between mt-5">
                     <div class="col-5 fs-4 fw-medium" th:text="|Prezzo: ${prodotto.prezzo} €|"></div>
-                    <div class="col-5">
-                        <a th:href="@{/shop/create(prodottoId=${prodotto.id})}"
-                           class="btn btn-outline-warning text-color-custom me-2 fw-semibold">Acquista</a>
+                    <div class="text-light">
+                        <a th:if="${prodotto.quantita != 0}"
+                           th:href="@{/shop/create(prodottoId=${prodotto.id})}"
+                           class="btn btn-outline-warning text-color-custom me-2">Acquista</a>
+                        <a th:unless="${prodotto.quantita != 0}" th:href="@{/shop/create(prodottoId=${prodotto.id})}" class="btn btn-outline text-color-custom">Prenota</a>
                     </div>
                 </div>
 
