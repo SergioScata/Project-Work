@@ -27,6 +27,8 @@ public class Prodotto {
 
     @OneToMany(mappedBy = "prodotto")
     private List<Acquisto> acquisto;
+    @OneToMany(mappedBy = "prodotto")
+    private List<Prenotazione> prenotazione;
 
     public List<Assortimento> getAssortimento() {
         return assortimento;
@@ -115,6 +117,9 @@ public class Prodotto {
         }
         if (assortimento != null) {
             assortimento.forEach(a -> a.setProdotto(null));
+        }
+        if (prenotazione != null) {
+            prenotazione.forEach(a -> a.setProdotto(null));
         }
     }
 
