@@ -45,7 +45,7 @@
             <br/>
             <label for="firstName" class=" my-4 underbars"></label>
 
-            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
+            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="password"
                    step="0.01" id="password" th:field="*{password}"
                    th:errorClass="is-invalid">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('password')}">
