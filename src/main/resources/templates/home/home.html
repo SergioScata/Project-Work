@@ -14,7 +14,7 @@
 
     <div class="home_background mb-5" style="height: 800px; ">
         <img src="/statua1.png" id="statua"
-             style=" position: relative; right: -65%; top: -40%; width: 40em;">
+             style=" position: relative; right: -60%; top: -70%; width: 40em;">
         <div class="border text-center w-50" style=" position: relative; left: 10%; top: -30%; ">
             <h6>
                 Lorem nainfianiuvnwvnvnnsvnklv sj kjs ksn sk
@@ -24,13 +24,12 @@
 
     <div class="home_row_gold"></div>
 
-    <section class="row justify-content-around g-5 mb-5 pb-5 mt-4 ">
-        <div class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottiTop}">
+
     <h2 class="pt-3 text-center">Most appreciated</h2>
 
 
-    <section class="row justify-content-around g-5 mb-5 pt-3 mt-4 ">
-        <div class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottoList}">
+    <section class="row justify-content-around g-5 mb-5 pb-5 mt-4 ">
+        <div class=" text-align-left d-flex justify-content-start col-5 " th:each="prodotto : ${prodottiTop}">
             <a th:href="@{/shop/show/{id}(id=${prodotto.id})}" class="text-decoration-none text-dark">
                 <div class="img-hover">
                     <img th:src="@{${prodotto.foto}}" class="" style="width: 200px; transform: scale(95%);"

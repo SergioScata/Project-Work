@@ -103,7 +103,7 @@ function closeNav() {
 window.addEventListener('scroll', function() {
         const statua = document.getElementById('statua');
         const scrollPosition = window.pageYOffset;
-        const speed = -0.90;
+        const speed = -0.40;
 
         statua.style.transform = 'translateY(' + (-scrollPosition * speed) + 'px)';
     });
