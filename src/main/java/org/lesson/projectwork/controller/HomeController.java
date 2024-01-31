@@ -1,5 +1,7 @@
 package org.lesson.projectwork.controller;
 
+import org.lesson.projectwork.comparators.ProdottoAcquistoComparator;
+import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AcquistoRepository;
 import org.lesson.projectwork.repository.MuseumUserRepository;
@@ -14,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -30,10 +31,21 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model) {
-        List<Prodotto> prodottoList;
-        prodottoList = prodottoRepository.findAll();
-        model.addAttribute("prodottoList", prodottoList);
+        List<Prodotto> prodottoList=prodottoRepository.findAll();
+
+        List<Prodotto> topProdotti = new ArrayList<>();
+        Comparator comparator= new ProdottoAcquistoComparator();
+
+        Collections.sort(prodottoList,Collections.reverseOrder(comparator));
+        topProdotti=prodottoList.subList(0,3);
+
+
+        model.addAttribute("prodottiTop", topProdotti);
+
+
+
         return "home/home";
     }
+
 
 }
