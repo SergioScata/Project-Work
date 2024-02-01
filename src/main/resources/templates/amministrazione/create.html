@@ -5,8 +5,10 @@
 <body id="transition">
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
-<main class="container mt-4 " style="min-height: 720px; font-size: 1.5em;">
-    <h1 class="gold-text title" th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
+<main class="container my-4 "
+      style="min-height: 700px; font-size: 1.5em; background-color: #222222a3;">
+    <h1 class="gold-text title pt-3"
+        th:text="${prodotto.id == null ? 'Aggiungi un Prodotto' : 'Modifica Prodotto'}"></h1>
 
     <form id="ingredients-create" class="row"
           th:with="url=${prodotto.id == null ? '/amministrazione/create' : '/amministrazione/edit/' + prodotto.id}"
@@ -39,17 +41,6 @@
             </div>
         </div>
 
-        <div class="mt-3 col-4">
-            <label class="form-label" for="quantita"><h5>Quantità</h5></label>
-            <input class="form-control" style="font-family: Arial, Helvetica, sans-serif;" type="number" id="quantita"
-                   th:field="*{quantita}"
-                   th:errorClass="is-invalid">
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('quantita')}">
-                <ul>
-                    <li th:each="err : ${#fields.errors('quantita')}" th:text="${err}"></li>
-                </ul>
-            </div>
-        </div>
 
         <div class="mt-3 col-6">
             <label class="form-label" for="foto"><h5>Link Foto</h5></label>
