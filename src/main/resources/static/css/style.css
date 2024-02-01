@@ -83,7 +83,8 @@ body{
 }
 
 .table-shadow {
-box-shadow: 17px 20px 7px 8px #e5b95359;
+/*box-shadow: 17px 20px 7px 8px #e5b95359;*/
+box-shadow: 12px 17px 6px 2px #89898959;
 }
 
 .table-group-divider {

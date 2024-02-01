@@ -9,22 +9,22 @@ import java.util.Set;
 
 @Entity
 @Table
-public class Acquisto{
+public class Acquisto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate dataAcquisto;
-   @NotNull
-   private Integer quantita;
-   @ManyToOne
-   private Prodotto prodotto;
+    @NotNull
+    private Integer quantita;
+    @ManyToOne
+    private Prodotto prodotto;
 
-   private BigDecimal prezzoSingolo;
+    private BigDecimal prezzoSingolo;
 
-   private Integer codice;
+    private Integer codice;
 
 
-   private String nome;
+    private String nome;
 
     @ManyToOne
     private MuseumUser user;
@@ -70,8 +70,7 @@ public class Acquisto{
         this.prodotto = prodotto;
     }
 
-    public BigDecimal getPrezzoSingolo()
-    {
+    public BigDecimal getPrezzoSingolo() {
         return prezzoSingolo;
     }
 
@@ -95,9 +94,8 @@ public class Acquisto{
         this.user = user;
     }
 
-    public  BigDecimal getPrezzoTotale(){
-        BigDecimal prezzoTotale= prezzoSingolo.multiply(new BigDecimal(quantita));
-
-    return prezzoTotale;
-}
+    public BigDecimal getPrezzoTotale() {
+        BigDecimal prezzoTotale = prezzoSingolo.multiply(new BigDecimal(quantita));
+        return prezzoTotale;
+    }
 }
