@@ -8,8 +8,8 @@
 <main class="container" style="background-color: #222222a3; margin-top: 15em;">
 
     <div style="position: relative; " id="big_title">
-        <h1 style="font-size: 6.5em;">WELCOME </h1>
-        <h1 style="font-size: 6.5em;">TO THE MUSEUM</h1>
+        <h1 style="font-size: 5.0em;">WELCOME </h1>
+        <h1 style="font-size: 5.0em;">TO THE MUSEUM</h1>
     </div>
 
     <div class="home_background mb-5" style="height: 800px; ">
@@ -47,7 +47,7 @@
                 <div id="cCarousel-inner">
 
                     <article class="cCarousel-item" th:each="prodotto : ${prodottiTop}">
-                        <img th:src="@{${prodotto.foto}}" class=""
+                        <img th:src="@{${prodotto.foto}}"
                              alt="foto ">
                         <div class="infos">
                             <h4 class="mb-2 text-light" th:text="${prodotto.nome}"></h4>
