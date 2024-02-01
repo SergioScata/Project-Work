@@ -6,7 +6,7 @@
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
 <main class="text-light" style="min-height: 727px; ">
-    <div class="text-center" style="width: 470px; height: 400px; background-color: #222222e0; margin: 0 auto;">
+    <div class="text-center" style="width: 470px; height: 460px; background-color: #222222e0; margin: 0 auto;">
         <h1 class="pt-5 mt-3">Accesso</h1>
         <form th:action="@{/login}" method="post">
             <label for="username" class=" my-4 underbars"><i class="fa-regular fa-user"></i></label>
@@ -19,9 +19,15 @@
                    required
                    style="background-color: transparent; border: none;"/>
             <br/>
-            <button type="submit" class="fs-3 mt-5 gold-text" style="background-color: transparent; border: none;">
+            <button type="submit" class="fs-2 mt-5 gold-text" style="background-color: transparent; border: none;">
                 Login
             </button>
+            <h5 class="mt-4">Non sei ancora registrato? </h5>
+            <a  th:href="@{/assortimenti/create}" class="btn fs-3 gold-text" style="background-color: transparent; border: none; ">
+                Register
+            </a>
+
+
         </form>
     </div>
 </main>
