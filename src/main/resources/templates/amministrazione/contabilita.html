@@ -37,16 +37,16 @@
                     <table class="table table-striped mt-2">
                         <thead>
                         <tr>
-                            <th>Totale Entrate</th>
-                            <th>Totale Uscite</th>
-                            <th>Totale Profitti</th>
+                            <th><h5>Totale Entrate </h5></th>
+                            <th><h5>Totale Uscite</h5></th>
+                            <th><h5>Totale Profitti</h5></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${totaleEntrate}"></td>
-                            <td th:text="${totaleUscite}"></td>
-                            <td th:text="${totaleCosti}"
+                            <td class="fw-semibold" th:text="|${totaleEntrate} €|"></td>
+                            <td class="fw-semibold" th:text="|${totaleUscite} €|"></td>
+                            <td class="fw-semibold" th:text="|${totaleCosti} €|"
                                 th:classappend="${totaleCosti <= 0 ? 'text-danger' : 'text-success'}"></td>
                         </tr>
                         </tbody>
@@ -58,20 +58,20 @@
                             <thead>
 
                             <tr>
-                                <th>Data</th>
-                                <th>Tipo</th>
-                                <th>Quantità</th>
-                                <th>Prodotto</th>
-                                <th>Costo</th>
+                                <th><h5>Data</h5></th>
+                                <th><h5>Tipo</h5></th>
+                                <th><h5>Quantità</h5></th>
+                                <th><h5>Prodotto</h5></th>
+                                <th><h5>Costo</h5></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="entry : ${acquisti}">
-                                <td th:text="${entry.dataAcquisto}"></td>
-                                <td th:text="'acquisto'"></td>
-                                <td th:text="${entry.quantita}"></td>
-                                <td th:text="${entry.nome}"></td>
-                                <td class="text-success"
+                                <td class="fw-semibold" th:text="${entry.dataAcquisto}"></td>
+                                <td  class="fw-semibold"th:text="'acquisto'"></td>
+                                <td class="fw-semibold" th:text="${entry.quantita}"></td>
+                                <td class="fw-semibold" th:text="${entry.nome}"></td>
+                                <td  class="text-success fw-semibold"
                                     th:text="|${entry.prezzoTotale} €|"></td>
 
                             </tr>
@@ -84,21 +84,21 @@
                             <thead>
 
                             <tr>
-                                <th>Data</th>
-                                <th>Tipo</th>
-                                <th>Quantità</th>
-                                <th>Prodotto</th>
-                                <th>Costo</th>
+                                <th><h5>Data</h5></th>
+                                <th><h5>Tipo</h5></th>
+                                <th><h5>Quantità</h5></th>
+                                <th><h5>Prodotto</h5></th>
+                                <th><h5>Costo</h5></th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr th:each="entry : ${assortimenti}">
-                                <td th:text="${entry.dataAssortimento}"></td>
-                                <td th:text="'assortimento'"></td>
-                                <td th:text="${entry.quantitaAcquistata}"></td>
-                                <td th:text="${entry.nome}"></td>
-                                <td class="text-success"
+                                <td class="fw-semibold" th:text="${entry.dataAssortimento}"></td>
+                                <td class="fw-semibold" th:text="'assortimento'"></td>
+                                <td class="fw-semibold" th:text="${entry.quantitaAcquistata}"></td>
+                                <td class="fw-semibold" th:text="${entry.nome}"></td>
+                                <td  class="text-success fw-semibold"
                                     th:text="|${entry.prezzoTotale} €|"></td>
 
                             </tr>
