@@ -51,13 +51,13 @@
                     <span sec:authorize="!isAuthenticated()"><i class="fa-solid fa-right-to-bracket"></i> Login</span>
                 </a>
                 <a class="mt-4 login-link" th:href="@{/user/register}">
-                    <span sec:authorize="!isAuthenticated()"><i class="fa-solid fa-user"></i> Register</span>
+                    <span sec:authorize="!isAuthenticated()"><i class="fa-solid fa-user" ></i> Register</span>
                 </a>
                 <sec:authorize access="isAuthenticated()">
                     <span class="gold-text ps-4 fs-4" sec:authorize="hasAnyAuthority('ADMIN','USER')"><span
                             th:text="${#authentication.name}"></span></span>
                     <a class="mt-4" href="/logout" sec:authorize="hasAnyAuthority('ADMIN','USER')"><i class="fa-solid fa-right-from-bracket"></i> Logout </a>
-                    <a href="/user/acquisti" sec:authorize="hasAnyAuthority('ADMIN','USER')"><i class="fa-solid fa-cart-shopping"></i> I tuoi Acquisti</a>
+                    <a href="/user/acquisti" sec:authorize="hasAnyAuthority('ADMIN','USER')"><i class="fa-solid fa-cart-shopping" style ="margin-left: -3px;"></i> I tuoi Acquisti</a>
                     <a href="/user" sec:authorize="hasAnyAuthority('ADMIN','USER')"><i class="fa-solid fa-user"></i> Il tuo Profilo</a>
 
                 </sec:authorize>
