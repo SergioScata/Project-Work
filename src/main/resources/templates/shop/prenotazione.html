@@ -6,51 +6,96 @@
 
 <header th:replace="fragments/navbar.html :: navbar('shop')"></header>
 
-<main class="container h-100" style="min-height: 760px;">
+<main class="container h-100 mb-3" style="min-height: 700px; background-color: #ffffffde;">
+
 
     <form
             id="create-prenotazione"
             method="post"
             th:object="${prenotazione}"
             th:action="@{/shop/create}"
-            class="row gy-3"
+            class="row gy-3 mt-3"
     >
         <input type="hidden" th:field="*{prodotto}">
-        <h1 class="mb-5 mt-5 title gold-text">Prenota <span th:text="${prodotto.nome}"></span></h1>
 
-        <div class="row">
+        <h1 class="mb-5 mt-5 pt-3 title gold-text">Prenota <span th:text="${prodotto.nome}"></span></h1>
 
-        </div>
-        <div class="img-td-width col-4"><img
-                class="img-fluid w-75 mt-3" th:src="@{${prodotto.foto}}">
-        </div>
+        <div class="row text-dark">
+            <div class="col-8">
+                <h2 class="ps-5 ms-2">La tua prenotazione</h2>
+                <hr class="text-dark">
+
+                <div class="d-flex mx-2">
+
+                    <div class="img-td-width col-4"><img
+                            class="img-fluid w-75 mt-3" th:src="@{${prodotto.foto}}">
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <h4 class="mt-1" style="width: 10em;">Seleziona quantità</h4>
+                        <label class="form-label logocolor" for="quantita"></label>
+                        <select class="form-control border-bottom-0 border-start-0 w-25 fs-5 fw-semibold"
+                                id="quantita" th:field="*{quantita}"
+                                th:errorClass="is-invalid">
+                            <option th:each="i : ${#numbers.sequence(1, 200)}" th:value="${i}"
+                                    th:text="${i}"></option>
+                        </select>
+
+                        <div class="ps-5" style="width: 10em;">
+                            <h2 class="">€ <span id="prezzoSingolo" th:text="${prodotto.prezzo}"
+                                                 th:value="${prodotto.prezzo}"></span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <h2>Riepilogo Ordine</h2>
+                <hr class="text-dark">
+                <div class="d-flex justify-content-between mb-4 mt-4">
+                    <h4>Totale</h4>
+                    <h3 id="totalPrice"></h3>
+                </div>
+
+                <div class="d-flex justify-content-between mb-4">
+                    <h4>Spedizione</h4>
+                    <h4>Gratuita</h4>
+                </div>
+
+                <div class="text-center ">
+                    <div class="mb-4">
+                        <button type="submit"
+                                class="btn btn-outline-warning text-color-custom px-5 fw-semibold">Conferma
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-outline-warning text-color-custom px-5 fw-semibold" th:href="@{/shop}">
+                            Cancella
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
 
 
+            <input type="hidden" th:field="*{dataAcquisto}">
 
+            <h5 class="mt-5 text-center">I tempi di spedizione potrebbero essere più lunghi, in relazione alla
+                disponibilità del
+                fornitore
+            </h5>
 
-        <div class="col-4">
-            <label class="form-label logocolor mb-3" for="quantita"><h5>Seleziona quantità</h5></label>
-            <select class="form-control border-bottom-0 border-start-0 w-25 fs-5 fw-semibold"
-                    id="quantita" th:field="*{quantita}"
-                    th:errorClass="is-invalid">
-                <option th:each="i : ${#numbers.sequence(1, 200)}" th:value="${i}"
-                        th:text="${i}"></option>
-            </select>
-        </div>
-
-
-        <input type="hidden" th:field="*{dataAcquisto}">
-
-
-        <div class="col-8" style="margin-left: 250px;">
-            <button type="submit" class="btn btn-outline-warning text-color-custom">Conferma</button>
-            <a class="btn btn-outline-warning text-color-custom" th:href="@{/shop}">Cancella</a>
         </div>
     </form>
+
 
 </main>
 
 <footer th:replace="fragments/resources :: footer"></footer>
+
+<script src="/js/calcolo.js"></script>
 
 <th:block th:replace="fragments/resources :: script"></th:block>
 

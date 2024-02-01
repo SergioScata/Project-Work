@@ -28,16 +28,6 @@
             <div class="col-8 gold-text title">
                 <h1>Transazioni utenti</h1>
             </div>
-
-            <form class="col-3" id="prodotto-search" th:action="@{/transazioni}" method="get"
-                  style="font-family: Arial, Helvetica, sans-serif;">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="keyword" id="keyword"
-                           placeholder="cerca un prodotto per nome" th:value="${preloadSearch}">
-                    <button type="submit" class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-            </form>
         </div>
 
         <div th:if="${acquisti.size == 0}" class="mt-5 pt-3 text-center">
@@ -47,7 +37,7 @@
         <div class="row">
 
             <div class="col-12 col-lg-8">
-                <table class="table table-striped mt-2" th:unless="${acquisti.size == 0}">
+                <table class="table table-striped table-shadow mt-2" th:unless="${acquisti.size == 0}">
                     <thead>
                     <tr>
                         <th scope="col">Codice transazione</th>
@@ -81,7 +71,6 @@
                         <td>
                             <div class="badge text-dark "><h6 th:text="${acq.prezzoTotale}  + ' ' + € "></h6></div>
                         </td>
-
 
 
                     </tr>
