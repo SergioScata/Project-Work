@@ -28,13 +28,15 @@
         .navbar-nav .nav-item .active {
             color: #E3AA54;
         }
-input::before {
+.text-area222::before {
     content: attr(placeholder);
-    color: #1c87c9;
+    color: #ffffff;
+    font-weight: 500;
     opacity: 1;
 }
-input::placeholder {
-    color: #1c87c9;
+.text-area222::placeholder {
+    color: #ffffff;
+    font-weight: 500;
     opacity: 1;
 }
     </style>
@@ -62,7 +64,7 @@ input::placeholder {
             </li>
         </ul>
         <div class="chat-input text-light">
-            <textarea placeholder="Scrivi un messaggio..." spellcheck="false" required></textarea>
+            <textarea class="text-area222" placeholder="Scrivi un messaggio..." spellcheck="false" required></textarea>
             <span id="send-btn" class="material-symbols-rounded">Invia</span>
         </div>
     </div>
