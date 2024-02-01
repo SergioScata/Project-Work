@@ -9,4 +9,6 @@ public class ProdottoAcquistoComparator implements Comparator<Prodotto> {
     public int compare(Prodotto o1, Prodotto o2) {
         return Integer.compare(o1.getAcquisto().size(), o2.getAcquisto().size());
     }
+
+
 }

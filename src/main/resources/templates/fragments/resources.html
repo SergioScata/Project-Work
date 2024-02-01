@@ -28,6 +28,17 @@
         .navbar-nav .nav-item .active {
             color: #E3AA54;
         }
+.text-area222::before {
+    content: attr(placeholder);
+    color: #ffffff;
+    font-weight: 500;
+    opacity: 1;
+}
+.text-area222::placeholder {
+    color: #ffffff;
+    font-weight: 500;
+    opacity: 1;
+}
     </style>
 
 
@@ -41,20 +52,20 @@
     </button>
 
 
-    <div class="chatbot">
+    <div class="chatbot bg-opacity-25">
         <header>
             <h2>Chatta con noi</h2>
             <span class="close-btn material-symbols-outlined">chiudi</span>
         </header>
-        <ul class="chatbox">
+        <ul class="chatbox ">
             <li class="chat incoming">
                 <span class="material-symbols-outlined"></span>
                 <p>Ciao 👋<br>Come posso aiutarti oggi?</p>
             </li>
         </ul>
-        <div class="chat-input">
-            <textarea placeholder="Scrivi un messaggio..." spellcheck="false" required></textarea>
-            <span id="send-btn" class="material-symbols-rounded">invia</span>
+        <div class="chat-input text-light">
+            <textarea class="text-area222" placeholder="Scrivi un messaggio..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">Invia</span>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

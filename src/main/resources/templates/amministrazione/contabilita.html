@@ -66,13 +66,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="entry : ${entrate}">
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.dataAcquisto} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? 'acquisto' : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.quantita} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.prodotto.nome} : ''"></td>
+                            <tr th:each="entry : ${acquisti}">
+                                <td th:text="${entry.dataAcquisto}"></td>
+                                <td th:text="'acquisto'"></td>
+                                <td th:text="${entry.quantita}"></td>
+                                <td th:text="${entry.nome}"></td>
                                 <td class="text-success"
-                                    th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? |${entry.prezzoTotale} €| : ''"></td>
+                                    th:text="|${entry.prezzoTotale} €|"></td>
 
                             </tr>
                             </tbody>
@@ -92,13 +92,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="entry : ${entrate}">
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.dataAssortimento} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? 'assortimento' : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.quantitaAcquistata} : ''"></td>
-                                <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.prodotto.nome} : ''"></td>
-                                <td class="text-danger"
-                                    th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? |- ${entry.prezzoTotale} €|: ''"></td>
+
+                            <tr th:each="entry : ${assortimenti}">
+                                <td th:text="${entry.dataAssortimento}"></td>
+                                <td th:text="'assortimento'"></td>
+                                <td th:text="${entry.quantitaAcquistata}"></td>
+                                <td th:text="${entry.nome}"></td>
+                                <td class="text-success"
+                                    th:text="|${entry.prezzoTotale} €|"></td>
+
                             </tr>
                             </tbody>
                         </table>
