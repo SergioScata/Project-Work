@@ -7,6 +7,7 @@ function totalCalc() {
   nProdotti = parseInt(nProdotti);
 
   let prezzoSingolo = document.getElementById("prezzoSingolo").textContent;
+   console.log(prezzoSingolo);
   prezzoSingolo = parseFloat(prezzoSingolo);
 
   let prezzoTotale = nProdotti*prezzoSingolo;
