@@ -60,7 +60,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="entry : ${entrate}">
+                            <tr th:each="entry : ${acquisti}">
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.dataAcquisto} : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? 'acquisto' : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Acquisto)} ? ${entry.quantita} : ''"></td>
@@ -86,7 +86,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="entry : ${entrate}">
+                            <tr th:each="entry : ${assortimenti}">
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.dataAssortimento} : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? 'assortimento' : ''"></td>
                                 <td th:text="${entry != null && entry instanceof T(org.lesson.projectwork.model.Assortimento)} ? ${entry.quantitaAcquistata} : ''"></td>

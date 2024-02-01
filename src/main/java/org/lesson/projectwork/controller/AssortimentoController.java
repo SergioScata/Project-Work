@@ -1,6 +1,7 @@
 package org.lesson.projectwork.controller;
 
 import jakarta.validation.Valid;
+import org.lesson.projectwork.model.Acquisto;
 import org.lesson.projectwork.model.Assortimento;
 import org.lesson.projectwork.model.Prodotto;
 import org.lesson.projectwork.repository.AssortimentoRepository;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -29,6 +32,7 @@ public class AssortimentoController {
         List<Assortimento> assortimentoList;
 
         assortimentoList = assortimentoRepository.findAll();
+        Collections.sort(assortimentoList, Comparator.comparing(Assortimento::getDataAssortimento));
 
         model.addAttribute("assortimentiList", assortimentoList);
         return "assortimenti/list";

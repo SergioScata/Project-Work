@@ -19,9 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/amministrazione")
@@ -123,6 +121,7 @@ public class ProdottoAmministrazioneController {
         List<Acquisto> acquistoList;
 
         acquistoList = acquistoRepository.findAll();
+        Collections.sort(acquistoList, Comparator.comparing(Acquisto::getDataAcquisto));
 
         model.addAttribute("acquistoList", acquistoList);
         return "amministrazione/listaAcquisti";
@@ -132,6 +131,7 @@ public class ProdottoAmministrazioneController {
         List<Prenotazione> prenotazioneList;
 
         prenotazioneList = prenotazioneRepository.findAll();
+        Collections.sort(prenotazioneList, Comparator.comparing(Prenotazione::getDataAcquisto));
 
         model.addAttribute("prenotazioniList", prenotazioneList);
         return "amministrazione/listaPrenotazioni";
@@ -141,35 +141,22 @@ public class ProdottoAmministrazioneController {
     public String contabilita(Model model) {
         List<Acquisto> acquisti = acquistoRepository.findAll();
         List<Assortimento> assortimenti = assortimentoRepository.findAll();
-        List<Object> entries = new ArrayList<>();
         BigDecimal totalAcquisti = BigDecimal.ZERO;
         BigDecimal totalAssortimenti= BigDecimal.ZERO;
-        for (Acquisto acquisto : acquisti) {
-            entries.add(acquisto);
-        }
-        for (Assortimento assortimento : assortimenti) {
-            entries.add(assortimento);
-        }
-        entries.sort((e1, e2) -> {
-            if (e1 instanceof Acquisto && e2 instanceof Acquisto) {
-                return ((Acquisto) e2).getDataAcquisto().compareTo(((Acquisto) e1).getDataAcquisto());
-            } else if (e1 instanceof Assortimento && e2 instanceof Assortimento) {
-                return ((Assortimento) e2).getDataAssortimento().compareTo(((Assortimento) e1).getDataAssortimento());
-            } else {
-                return 0;
-            }
-        });
         for (Acquisto a: acquisti){
             totalAcquisti= totalAcquisti.add(a.getPrezzoTotale());
         }
         for (Assortimento a: assortimenti){
             totalAssortimenti= totalAssortimenti.add(a.getPrezzoTotale());
         }
+        Collections.sort(acquisti, Comparator.comparing(Acquisto::getDataAcquisto));
+        Collections.sort(assortimenti, Comparator.comparing(Assortimento::getDataAssortimento));
         BigDecimal incasso= totalAcquisti.subtract(totalAssortimenti);
+        model.addAttribute("acquisti", acquisti);
+        model.addAttribute("assortimenti", assortimenti);
         model.addAttribute("totaleCosti",incasso);
         model.addAttribute("totaleEntrate", totalAcquisti);
         model.addAttribute("totaleUscite",totalAssortimenti);
-        model.addAttribute("entrate", entries);
         return "amministrazione/contabilita";
     }
 }
