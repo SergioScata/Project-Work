@@ -5,49 +5,58 @@
 <body id="transition">
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
-
 <main class="text-light" style="min-height: 727px; ">
-    <div class="text-center" style="width: 470px; height: 400px; background-color: #222222e0; margin: 0 auto;">
-        <h1 class="pt-5 mt-3">Registrazione Utente</h1>
+    <div class="text-center" style="width: 470px; height: 550px; background-color: #222222e0; margin: 0 auto;">
+        <h1 class="pt-5 mt-3">REGISTRAZIONE</h1>
+
         <form th:action="@{/user/register}"
               th:object="${user}" method="post">
-            <label for="firstName" class=" my-4 underbars"><i class="fa-regular fa-user"></i></label>
-            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
-                   step="0.01" id="firstName" th:field="*{firstName}"
-                   th:errorClass="is-invalid">
+
+            <label for="firstName" class=" my-4 underbars"></label>
+            <input class="fs-5 text-light"
+                   style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; border: none;"
+                   type="text"
+                   id="firstName" th:field="*{firstName}"
+                   th:errorClass="is-invalid" placeholder="Nome">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('firstName')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
                 </ul>
             </div>
             <br/>
-            <label for="firstName" class=" my-4 underbars"></label>
 
-            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
-                   step="0.01" id="lastName" th:field="*{lastName}"
-                   th:errorClass="is-invalid">
+            <label for="lastName" class=" my-4 underbars"></label>
+            <input class="fs-5 text-light"
+                   style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; border: none;"
+                   type="text"
+                   id="lastName" th:field="*{lastName}"
+                   th:errorClass="is-invalid" placeholder="Cognome">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('lastName')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
                 </ul>
             </div>
             <br/>
-            <label for="firstName" class=" my-4 underbars"></label>
 
-            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="text"
-                   step="0.01" id="username" th:field="*{email}"
-                   th:errorClass="is-invalid">
+            <label for="username" class=" my-4 underbars"></label>
+            <input class="fs-5 text-light"
+                   style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; border: none;"
+                   type="text"
+                   id="username" th:field="*{email}"
+                   th:errorClass="is-invalid" placeholder="Username">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('email')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
                 </ul>
             </div>
             <br/>
-            <label for="firstName" class=" my-4 underbars"></label>
 
-            <input class="form-control mb-2" style="font-family: Arial, Helvetica, sans-serif;" type="password"
-                   step="0.01" id="password" th:field="*{password}"
-                   th:errorClass="is-invalid">
+            <label for="password" class=" my-4 underbars"></label>
+            <input class="fs-5 text-light"
+                   style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; border: none;"
+                   type="text"
+                   id="password" th:field="*{password}"
+                   th:errorClass="is-invalid" placeholder="Password">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('password')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
@@ -55,7 +64,7 @@
             </div>
             <br/>
 
-            <button type="submit" class="fs-3 mt-5 gold-text" style="background-color: transparent; border: none;">
+            <button type="submit" class="fs-3 mt-5 pt-5 gold-text" style="background-color: transparent; border: none;">
                 Register
             </button>
         </form>
