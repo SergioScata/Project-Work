@@ -114,7 +114,7 @@ function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     document.getElementById("big_title").style.fontSize = "1.0em";
   } else {
-    document.getElementById("big_title").style.fontSize = "1.4em";
+    document.getElementById("big_title").style.fontSize = "1.3em";
   }
 
   if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
