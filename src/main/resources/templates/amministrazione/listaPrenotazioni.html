@@ -84,10 +84,16 @@
                                     method="post"
                                     th:action="@{/conferma/{id}(id=${acq.id})}"
                                     class="row gy-3"
+                                    th:if="${acq.prodotto.quantita >= acq.quantita}"
                             >
                                 <button class="btn btn-outline-warning text-color-custom fw-semibold">Conferma
                                 </button>
                             </form>
+
+                            <button th:unless="${acq.prodotto.quantita >= acq.quantita}"
+                                    class="btn btn-outline-warning text-color-custom fw-semibold disabled">Conferma
+                            </button>
+
                         </td>
 
 

@@ -319,14 +319,14 @@ transform: scale(105%) ;
     right: 35px;
     outline: none;
     border: none;
-    height: 100px;
-    width: 100px;
+    height: 180px;
+    width: 180px;
     display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: url('/IAnubi.png');
+    background: url('/fdsghg.png');
     background-size: contain;
     transition: all 0.2s ease;
 }
@@ -399,7 +399,7 @@ header h2 {
 
 .chatbot .chatbox {
     overflow-y: auto;
-    height: 200px;
+    height: 300px;
     padding: 30px 20px 100px;
 }
 
