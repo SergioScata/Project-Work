@@ -54,7 +54,7 @@
             <label for="password" class=" my-4 underbars"></label>
             <input class="fs-5 text-light"
                    style="font-family: Arial, Helvetica, sans-serif; background-color: transparent; border: none;"
-                   type="text"
+                   type="password"
                    id="password" th:field="*{password}"
                    th:errorClass="is-invalid" placeholder="Password">
             <div class="invalid-feedback " th:if="${#fields.hasErrors('password')}">
