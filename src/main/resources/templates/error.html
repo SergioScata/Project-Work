@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/resources :: head('Amministrazione Show')"></head>
+
+<body class="" id="transition">
+<header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
+
+<div class="container text-center">
+
+    <h1 class="text-danger">Ooops!C'è stato un errore!</h1>
+
+    <h2 class="text-danger" th:text="${status}"></h2>
+
+
+
+    <p class="text-danger">Message: <span th:text="${message}"></span></p>
+
+    <div><a th:href="@{/}"> Torna alla home</a></div>
+
+    <p th:text="${trace}"></p>
+</div>
+<footer th:replace="fragments/resources :: footer"></footer>
+
+<th:block th:replace="fragments/resources :: script"></th:block>
+</body>
+</html>
