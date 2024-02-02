@@ -45,7 +45,7 @@
 
                         <div class=" d-flex justify-content-between pt-3">
                             <div class="text-light">
-                                <p th:text="${prodotto.quantita == 0 ? 'Queso prodotto è esaurito' : prodotto.quantita < 51 ? 'Affrettati, solo pochi disponibili !' : ' '}"> </p>
+                                <p th:text="${prodotto.quantita == 0 ? 'Questo prodotto è esaurito' : prodotto.quantita < 51 ? 'Affrettati, solo pochi disponibili !' : ' '}"> </p>
                             </div>
                             <div class="text-light">
                                 <a th:if="${prodotto.quantita != 0}"
