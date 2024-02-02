@@ -18,7 +18,7 @@ INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(1, 'ADMI
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(2, 'USER');
 INSERT INTO museum_user_role_set (museum_user_id, role_set_name) VALUES(3, 'USER');
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Tazze museo egizio', 'Ceramic industries', 2, 200, 10);
-INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Libri di Storia e Epica', 'libreria antica', 7, 200,2);
+INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Libri di Storia e Epica', 'libreria antica', 7, 0,2);
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Poster rinascimentali', 'History art', 3, 200, 3);
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Repliche statue', 'Ceramic industries', 14, 200, 1);
 INSERT INTO assortimento(data_assortimento, nome, nome_fornitore, prezzo_singolo, quantita_acquistata, prodotto_id)VALUES('2024-01-28', 'Gioielli antichi', 'Ceramic industries', 6, 200, 4);
