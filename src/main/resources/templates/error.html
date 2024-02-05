@@ -5,17 +5,19 @@
 <body class="" id="transition">
 <header th:replace="fragments/navbar.html :: navbar('amministrazione')"></header>
 
-<div class="container text-center">
+<div class="container text-center" style="min-height: 720px;">
 
-    <h1 class="text-danger">Ooops!C'è stato un errore!</h1>
+    <h1 class="text-danger">De nihilo nihilum, in nihilum nil posse reverti </h1>
+    <h2 class="text-danger">C'è stato un errore</h2>
 
     <h2 class="text-danger" th:text="${status}"></h2>
 
+    <img style="width: 30%;" src="/error.png">
 
 
-    <p class="text-danger">Message: <span th:text="${message}"></span></p>
+    <p class="text-white">Message: <span th:text="${message}"></span></p>
 
-    <div><a th:href="@{/}"> Torna alla home</a></div>
+    <div><a th:href="@{/}"><h2 class="gold-text "> Torna alla home </h2></a></div>
 
     <p th:text="${trace}"></p>
 </div>

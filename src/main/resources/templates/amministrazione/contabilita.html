@@ -68,10 +68,10 @@
                             <tbody>
                             <tr th:each="entry : ${acquisti}">
                                 <td class="fw-semibold" th:text="${entry.dataAcquisto}"></td>
-                                <td  class="fw-semibold"th:text="'acquisto'"></td>
+                                <td class="fw-semibold" th:text="'acquisto'"></td>
                                 <td class="fw-semibold" th:text="${entry.quantita}"></td>
                                 <td class="fw-semibold" th:text="${entry.nome}"></td>
-                                <td  class="text-success fw-semibold"
+                                <td class="text-success fw-semibold"
                                     th:text="|${entry.prezzoTotale} €|"></td>
 
                             </tr>
@@ -98,8 +98,8 @@
                                 <td class="fw-semibold" th:text="'assortimento'"></td>
                                 <td class="fw-semibold" th:text="${entry.quantitaAcquistata}"></td>
                                 <td class="fw-semibold" th:text="${entry.nome}"></td>
-                                <td  class="text-success fw-semibold"
-                                    th:text="|${entry.prezzoTotale} €|"></td>
+                                <td class="text-success fw-semibold"
+                                    th:text="|-${entry.prezzoTotale} €|"></td>
 
                             </tr>
                             </tbody>
