@@ -7,17 +7,20 @@
 
 <div class="container text-center" style="min-height: 720px;">
 
-    <h1 class="text-danger">De nihilo nihilum, in nihilum nil posse reverti </h1>
-    <h2 class="text-danger">C'è stato un errore</h2>
+    <h1 class="gold-text">De nihilo nihilum, in nihilum nil posse reverti </h1>
+    <h2 class="gold-text">Errare humanum est, contristari</h2>
 
-    <h2 class="text-danger" th:text="${status}"></h2>
+    <h2 class="gold-text " style="font-size: 3em" th:text="${status}"></h2>
 
     <img style="width: 30%;" src="/error.png">
 
 
-    <p class="text-white">Message: <span th:text="${message}"></span></p>
 
-    <div><a th:href="@{/}"><h2 class="gold-text "> Torna alla home </h2></a></div>
+
+    <div class="text-center mt-5" style="font-size: 2em; padding-top: 20px;">
+        <a class="text-decoration-none gold-text " th:href="@{/}"><i
+                class="fa-solid fa-circle-chevron-left "></i> Torna alla Home </a>
+    </div>
 
     <p th:text="${trace}"></p>
 </div>
